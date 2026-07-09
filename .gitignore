@@ -4,7 +4,7 @@ __pycache__/
 *.pyd
 .env
 *.log
-setup_env.ps1
+!setup_env.ps1
 wamey/
 Physiotherapy Services at Home1.pdf
 test.txt
