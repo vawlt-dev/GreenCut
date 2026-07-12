@@ -546,6 +546,14 @@ def update_booking_payment(booking_id: str, payment_status: str) -> None:
         conn.commit()
 
 
+def purge_bookings() -> int:
+    with get_conn() as conn:
+        n = conn.execute("SELECT COUNT(*) FROM bookings").fetchone()[0]
+        conn.execute("DELETE FROM bookings")
+        conn.commit()
+    return n
+
+
 def reschedule_booking(booking_id: str, new_date: str, new_start: str, duration_mins: int) -> None:
     new_end = _mins_to_time(_time_to_mins(new_start) + duration_mins)
     new_reschedule_token = secrets_token()

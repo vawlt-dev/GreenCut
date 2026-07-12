@@ -885,6 +885,16 @@ def admin_create_booking():
 # Admin — send payment link for existing booking
 # ---------------------------------------------------------------------------
 
+@app.route('/admin/purge', methods=['POST'])
+@login_required
+def admin_purge():
+    confirm_password = request.form.get('confirm_password', '')
+    if not hmac.compare_digest(confirm_password, ADMIN_PASS):
+        return redirect('/admin?tab=settings&purge_error=1')
+    db.purge_bookings()
+    return redirect('/admin?tab=settings&purge_ok=1')
+
+
 @app.route('/admin/bookings/<booking_id>/send-payment-link', methods=['POST'])
 @login_required
 def admin_send_payment_link(booking_id: str):

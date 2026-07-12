@@ -722,12 +722,65 @@
 
         <button type="submit" class="btn-save">Save Settings</button>
       </form>
+
+      <div id="purge-flash" style="display:none; background:#f0fdf4; border:1px solid #86efac; border-radius:6px; padding:12px 16px; font-family:Arial,sans-serif; font-size:14px; color:#166534; margin-top:16px;">
+        All bookings have been permanently deleted.
+      </div>
+      <div id="purge-flash-error" style="display:none; background:#fef2f2; border:1px solid #fca5a5; border-radius:6px; padding:12px 16px; font-family:Arial,sans-serif; font-size:14px; color:#b91c1c; margin-top:16px;">
+        Incorrect password — no bookings were deleted.
+      </div>
+
+      <!-- Danger Zone -->
+      <div class="card" style="margin-top:28px; border:2px solid #fca5a5;">
+        <h2 class="card-title" style="color:#b91c1c;">Danger Zone</h2>
+        <p class="card-desc" style="margin-bottom:18px;">
+          Permanently delete all bookings from the database. This cannot be undone. Services, working hours, blocked events, and settings are kept.
+        </p>
+        <button type="button" class="btn-danger" onclick="document.getElementById('purge-modal').style.display='flex'">
+          Purge All Bookings
+        </button>
+      </div>
     </div>
 
   </main>
 </div>
 
+<!-- Purge confirmation modal -->
+<div id="purge-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.55); z-index:9999; align-items:center; justify-content:center;">
+  <div style="background:#fff; border-radius:8px; padding:32px 36px; max-width:400px; width:90%; box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+    <h3 style="font-family:Georgia,serif; color:#b91c1c; margin-bottom:8px; font-size:1.2rem;">Purge All Bookings?</h3>
+    <p style="font-family:Arial,sans-serif; font-size:14px; color:#64748b; margin-bottom:20px; line-height:1.6;">
+      This will permanently delete every booking record. Enter your admin password to confirm.
+    </p>
+    <form method="POST" action="/admin/purge" id="purge-form">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <div style="margin-bottom:16px;">
+        <label style="display:block; font-family:Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#1e293b; margin-bottom:6px;">Admin Password</label>
+        <input type="password" name="confirm_password" id="purge-password" required
+               style="width:100%; padding:10px 12px; border:1px solid #e2e8f0; border-radius:4px; font-family:Arial,sans-serif; font-size:14px;"
+               placeholder="Enter your password to confirm">
+      </div>
+      <div id="purge-error" style="display:none; color:#b91c1c; font-family:Arial,sans-serif; font-size:13px; margin-bottom:12px;"></div>
+      <div style="display:flex; gap:10px;">
+        <button type="submit" class="btn-danger" style="flex:1;">Yes, Delete All Bookings</button>
+        <button type="button" style="flex:1; background:#f1f5f9; color:#1e293b; border:none; border-radius:4px; padding:7px 14px; font-family:Arial,sans-serif; font-size:13px; font-weight:700; cursor:pointer;"
+                onclick="closePurgeModal()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <script>
+// ---- Purge modal ----
+function closePurgeModal() {
+  document.getElementById('purge-modal').style.display = 'none';
+  document.getElementById('purge-password').value = '';
+  document.getElementById('purge-error').style.display = 'none';
+}
+document.getElementById('purge-modal').addEventListener('click', function(e) {
+  if (e.target === this) closePurgeModal();
+});
+
 // ---- Tab switching ----
 function showTab(name) {
   document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
@@ -827,6 +880,22 @@ function initCalendar() {
   });
   calendar.render();
 }
+
+// ---- Auto-tab + purge flash on redirect ----
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('tab')) showTab(params.get('tab'));
+  if (params.get('purge_ok')) {
+    showTab('settings');
+    const el = document.getElementById('purge-flash');
+    if (el) { el.style.display = 'block'; setTimeout(() => el.style.display = 'none', 6000); }
+  }
+  if (params.get('purge_error')) {
+    showTab('settings');
+    const el = document.getElementById('purge-flash-error');
+    if (el) { el.style.display = 'block'; setTimeout(() => el.style.display = 'none', 6000); }
+  }
+})();
 </script>
 </body>
 </html>
