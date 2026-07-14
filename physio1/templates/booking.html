@@ -640,8 +640,8 @@ async function submitPayment() {
     });
     const d2 = await r2.json();
     if (d2.redirect) { window.location.href = d2.redirect; return; }
-  } catch (e) { /* fall through to generic redirect */ }
-  window.location.href = '/booking/confirm';
+  } catch (e) { /* fall through */ }
+  window.location.href = '/booking/confirm/' + bookingId;
 }
 </script>
 {% endblock %}
