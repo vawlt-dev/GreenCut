@@ -211,9 +211,25 @@
         <input class="form-input" type="tel" id="f-phone" name="phone" autocomplete="tel">
       </div>
       <div class="form-row">
-        <label class="form-label" for="f-address">Home Address *</label>
-        <input class="form-input" type="text" id="f-address" name="address" required autocomplete="street-address" placeholder="Street address, suburb, city">
+        <label class="form-label" for="f-street">Street Address *</label>
+        <input class="form-input" type="text" id="f-street" required autocomplete="address-line1" placeholder="e.g. 42 Fitzherbert Ave">
       </div>
+      <div class="form-row-2">
+        <div class="form-row">
+          <label class="form-label" for="f-suburb">Suburb</label>
+          <input class="form-input" type="text" id="f-suburb" autocomplete="address-level3" placeholder="e.g. Palmerston North">
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="f-city">City / Town *</label>
+          <input class="form-input" type="text" id="f-city" required autocomplete="address-level2" placeholder="e.g. Palmerston North">
+        </div>
+      </div>
+      <div class="form-row" style="max-width:180px;">
+        <label class="form-label" for="f-postcode">Postcode *</label>
+        <input class="form-input" type="text" id="f-postcode" required autocomplete="postal-code" placeholder="4410" maxlength="4" pattern="\d{4}" inputmode="numeric">
+        <div id="postcode-error" style="color:#e53e3e; font-size:13px; font-family:Arial,sans-serif; margin-top:4px; display:none;">NZ postcodes are 4 digits.</div>
+      </div>
+      <input type="hidden" name="address" id="f-address">
       <div class="form-row">
         <label class="form-label" for="f-notes">Notes (optional)</label>
         <textarea class="form-textarea" id="f-notes" name="notes" placeholder="Any relevant health information, access requirements, etc."></textarea>
@@ -227,7 +243,7 @@
       <div class="payment-disabled-notice">No payment is required at this stage. We will confirm your appointment shortly.</div>
       <div class="step-nav">
         <button type="button" class="btn btn-outline-teal" onclick="goStep(2)">&larr; Back</button>
-        <button type="submit" class="btn btn-teal">Confirm Booking</button>
+        <button type="button" class="btn btn-teal" onclick="if(validateStep3()) document.getElementById('booking-form').submit()">Confirm Booking</button>
       </div>
       {% endif %}
     </div>
@@ -276,7 +292,32 @@ let calYear, calMonth;
   renderCalendar();
 })();
 
+function buildAddress() {
+  const street   = document.getElementById('f-street').value.trim();
+  const suburb   = document.getElementById('f-suburb').value.trim();
+  const city     = document.getElementById('f-city').value.trim();
+  const postcode = document.getElementById('f-postcode').value.trim();
+  const parts = [street, suburb, city, postcode].filter(Boolean);
+  document.getElementById('f-address').value = parts.join(', ');
+}
+
+function validateStep3() {
+  const postcode = document.getElementById('f-postcode').value.trim();
+  const err = document.getElementById('postcode-error');
+  if (!/^\d{4}$/.test(postcode)) {
+    err.style.display = 'block';
+    document.getElementById('f-postcode').focus();
+    return false;
+  }
+  err.style.display = 'none';
+  buildAddress();
+  return true;
+}
+
 function goStep(n) {
+  if (n === 4 || (n === 'submit')) {
+    if (!validateStep3()) return;
+  }
   for (let i = 1; i <= 4; i++) {
     const panel = document.getElementById('panel-' + i);
     const ind   = document.getElementById('step-ind-' + i);
