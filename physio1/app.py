@@ -193,7 +193,7 @@ def api_address_search():
     if len(q) < 3:
         return jsonify([])
     q_safe = q.replace("'", "''")
-    where = f"full_address_ascii LIKE '%{q_safe}%' AND is_land='fa'"
+    where = f"full_address_ascii LIKE '%{q_safe}%' AND is_land='tr'"
     params = urllib.parse.urlencode({
         'where': where,
         'outFields': 'full_address,full_address_number,full_road_name,suburb_locality,town_city',
