@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 
-{% block title %}PhysioOnWheels — Home Physiotherapy Auckland{% endblock %}
+{% block title %}PhysioOnWheels — Home Physiotherapy Palmerston North{% endblock %}
+{% block og_title %}PhysioOnWheels — Home Physiotherapy Palmerston North{% endblock %}
+{% block og_desc %}Thandeka brings professional physiotherapy directly to your door across Palmerston North &amp; surrounding areas. Book online today.{% endblock %}
+{% block seo %}
+{{ super() }}
+<meta name="description" content="PhysioOnWheels — professional home physiotherapy in Palmerston North &amp; surrounding areas. Expert care delivered to your door. Book online.">
+<meta name="keywords" content="physiotherapy Palmerston North, home physio Palmerston North, mobile physiotherapist, home physiotherapy, physio home visit, Manawatu physio">
+{% endblock %}
 
 {% block head %}
 <style>

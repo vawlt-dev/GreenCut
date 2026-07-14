@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 
-{% block title %}About — PhysioOnWheels{% endblock %}
+{% block title %}About — PhysioOnWheels Palmerston North{% endblock %}
+{% block og_title %}About Thandeka — PhysioOnWheels{% endblock %}
+{% block og_desc %}Meet Thandeka, registered physiotherapist and founder of PhysioOnWheels — bringing expert home physio care to Palmerston North &amp; surrounding areas.{% endblock %}
+{% block seo %}
+{{ super() }}
+<meta name="description" content="Meet Thandeka, registered physiotherapist and founder of PhysioOnWheels. Expert home physiotherapy in Palmerston North &amp; surrounding areas.">
+<meta name="keywords" content="about PhysioOnWheels, Thandeka physiotherapist, registered physiotherapist Palmerston North, home physio Manawatu">
+{% endblock %}
 
 {% block head %}
 <style>

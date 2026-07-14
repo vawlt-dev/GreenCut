@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 
-{% block title %}Services — PhysioOnWheels{% endblock %}
+{% block title %}Services — PhysioOnWheels Palmerston North{% endblock %}
+{% block og_title %}Physiotherapy Services — PhysioOnWheels{% endblock %}
+{% block og_desc %}Home physiotherapy services in Palmerston North — initial assessments, rehabilitation, falls prevention, pain management, neurological rehab &amp; more.{% endblock %}
+{% block seo %}
+{{ super() }}
+<meta name="description" content="Home physiotherapy services in Palmerston North — initial assessments, rehabilitation, falls prevention, pain management, neurological and post-operative rehab.">
+<meta name="keywords" content="physiotherapy services Palmerston North, home rehab, falls prevention, pain management physio, neurological physio Manawatu, post-op rehab">
+{% endblock %}
 
 {% block head %}
 <style>

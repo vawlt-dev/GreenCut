@@ -1,13 +1,13 @@
 {
   "banner": {
     "enabled": false,
-    "message": "Now accepting new patients across Auckland. Call 022 137 0336 to book.",
+    "message": "Now accepting new patients across Palmerston North & Surrounding Areas. Call 022 137 0336 to book.",
     "type": "promo"
   },
   "hero": {
     "title": "Physiotherapy That Comes to You",
     "subtitle": "Professional, personalised physiotherapy in the comfort of your own home. Recovering from injury, surgery, or managing a chronic condition — we come to you.",
-    "tagline": "Serving Auckland & Surrounding Areas",
+    "tagline": "Serving Palmerston North & Surrounding Areas",
     "cta_book": "Book a Session",
     "cta_services": "Our Services"
   },
@@ -25,7 +25,7 @@
   "contact": {
     "phone": "022 137 0336",
     "email": "werphysio1@gmail.com",
-    "service_area": "Auckland & Surrounding Areas",
+    "service_area": "Palmerston North & Surrounding Areas",
     "hours": "Mon–Fri 8:00am–6:00pm · Sat 8:00am–1:00pm"
   },
   "services": [

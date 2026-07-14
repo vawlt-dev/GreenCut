@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 
-{% block title %}Pricing — PhysioOnWheels{% endblock %}
+{% block title %}Pricing — PhysioOnWheels Palmerston North{% endblock %}
+{% block og_title %}Physiotherapy Pricing — PhysioOnWheels{% endblock %}
+{% block og_desc %}Transparent home physiotherapy pricing in Palmerston North. No hidden costs — all sessions include travel within our service area.{% endblock %}
+{% block seo %}
+{{ super() }}
+<meta name="description" content="Transparent home physiotherapy pricing in Palmerston North. Clear fees, no hidden costs. ACC, health insurance, and private payment accepted.">
+<meta name="keywords" content="physiotherapy cost Palmerston North, physio pricing NZ, home physio fees, ACC physio, physiotherapy Manawatu price">
+{% endblock %}
 
 {% block head %}
 <style>

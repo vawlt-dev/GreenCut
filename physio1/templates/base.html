@@ -5,7 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}PhysioOnWheels — Home Physiotherapy{% endblock %}</title>
   {% block seo %}
-  <meta name="description" content="Professional physiotherapy in the comfort of your own home. Serving Auckland and surrounding areas.">
+  <meta name="description" content="Professional home physiotherapy in Palmerston North &amp; surrounding areas. Thandeka brings expert physio care directly to your door — no travel, no waiting rooms.">
+  <meta name="robots" content="index, follow">
+  <meta name="geo.region" content="NZ-MWT">
+  <meta name="geo.placename" content="Palmerston North">
+  <link rel="canonical" href="https://physio.onwheels.nz{{ request.path }}">
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="PhysioOnWheels">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{% block og_title %}PhysioOnWheels — Home Physiotherapy Palmerston North{% endblock %}">
+  <meta property="og:description" content="{% block og_desc %}Professional physiotherapy delivered to your door across Palmerston North &amp; surrounding areas.{% endblock %}">
+  <meta property="og:url" content="https://physio.onwheels.nz{{ request.path }}">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="PhysioOnWheels — Home Physiotherapy Palmerston North">
+  <meta name="twitter:description" content="Expert physio care delivered to your door across Palmerston North &amp; surrounding areas.">
+  <!-- LocalBusiness structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalBusiness",
+    "name": "PhysioOnWheels",
+    "description": "Mobile physiotherapy service delivering expert home visits across Palmerston North and surrounding areas.",
+    "url": "https://physio.onwheels.nz",
+    "telephone": "022 137 0336",
+    "email": "{{ c.contact.email }}",
+    "areaServed": "Palmerston North & Surrounding Areas",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Palmerston North",
+      "addressRegion": "Manawatu-Whanganui",
+      "addressCountry": "NZ"
+    },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:00", "closes": "13:00" }
+    ],
+    "priceRange": "$$",
+    "medicalSpecialty": "Physiotherapy"
+  }
+  </script>
   {% endblock %}
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
