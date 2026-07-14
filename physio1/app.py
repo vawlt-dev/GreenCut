@@ -158,6 +158,11 @@ def about():
     return render_template('about.html', c=get_content(), active='about')
 
 
+@app.route('/privacy')
+def privacy():
+    return render_template('privacy.html', c=get_content())
+
+
 @app.route('/services')
 def services():
     return render_template('services.html', c=get_content(), active='services')
