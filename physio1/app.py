@@ -1,4 +1,4 @@
-import hmac, os, datetime, threading, json, uuid, secrets, smtplib
+import hmac, os, datetime, threading, json, uuid, secrets, smtplib, urllib.request, urllib.parse
 from email.mime.text import MIMEText
 from functools import wraps
 from flask import (Flask, render_template, request, redirect,
@@ -185,6 +185,30 @@ def booking():
 # ---------------------------------------------------------------------------
 # API — available slots for a service on a date
 # ---------------------------------------------------------------------------
+
+@app.route('/api/address-search')
+@csrf.exempt
+def api_address_search():
+    q = request.args.get('q', '').strip()
+    if len(q) < 3:
+        return jsonify([])
+    where = f"full_address_ascii LIKE '%{q.replace(\"'\", \"''\")}%' AND is_land='fa'"
+    params = urllib.parse.urlencode({
+        'where': where,
+        'outFields': 'full_address,full_address_number,full_road_name,suburb_locality,town_city',
+        'resultRecordCount': 8,
+        'orderByFields': 'full_address_ascii',
+        'f': 'json',
+    })
+    url = f'https://services.arcgis.com/xdsHIIxuCWByZiCB/arcgis/rest/services/LINZ_NZ_Addresses/FeatureServer/0/query?{params}'
+    try:
+        with urllib.request.urlopen(url, timeout=5) as r:
+            data = json.loads(r.read())
+        results = [f['attributes'] for f in data.get('features', [])]
+        return jsonify(results)
+    except Exception:
+        return jsonify([])
+
 
 @app.route('/api/slots')
 @csrf.exempt
