@@ -29,7 +29,7 @@
     "description": "Mobile physiotherapy service delivering expert home visits across Palmerston North and surrounding areas.",
     "url": "https://physio.onwheels.nz",
     "telephone": "022 137 0336",
-    "email": "{{ c.contact.email }}",
+    "email": "{{ (c.contact.email if c.contact is defined else '') }}",
     "areaServed": "Palmerston North & Surrounding Areas",
     "address": {
       "@type": "PostalAddress",
