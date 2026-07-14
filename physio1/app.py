@@ -227,12 +227,13 @@ def booking_post():
     name       = request.form.get('name',       '')[:100].strip()
     email      = request.form.get('email',      '')[:200].strip()
     phone      = request.form.get('phone',      '')[:50].strip()
+    address    = request.form.get('address',    '')[:300].strip()
     service_id = request.form.get('service_id', '')
     date_str   = request.form.get('date',       '')[:20].strip()
     start_time = request.form.get('start_time', '')[:10].strip()
     notes      = request.form.get('notes',      '')[:1000].strip()
 
-    if not all([name, email, date_str, start_time, service_id]):
+    if not all([name, email, address, date_str, start_time, service_id]):
         return redirect('/booking?error=missing')
 
     svc = db.get_service(service_id)
@@ -254,6 +255,7 @@ def booking_post():
         'name':          name,
         'email':         email,
         'phone':         phone,
+        'address':       address,
         'service_id':    service_id,
         'service_label': svc['name'],
         'duration_mins': svc['duration_mins'],
@@ -282,7 +284,7 @@ def booking_post():
         send_email(
             owner_email,
             f'New Booking — {name}',
-            booking_email_body(booking, f'<p>Phone: {phone}</p><p>Notes: {notes}</p>'),
+            booking_email_body(booking, f'<p>Phone: {phone}</p><p>Address: {address}</p><p>Notes: {notes}</p>'),
         )
 
     session['last_booking_id'] = booking_id

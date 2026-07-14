@@ -64,6 +64,7 @@ def init_db() -> None:
                 end_time         TEXT NOT NULL,
                 status           TEXT NOT NULL DEFAULT 'pending',
                 payment_status   TEXT NOT NULL DEFAULT 'unpaid',
+                address          TEXT NOT NULL DEFAULT '',
                 notes            TEXT NOT NULL DEFAULT '',
                 cancel_token     TEXT UNIQUE,
                 reschedule_token TEXT UNIQUE,
@@ -75,6 +76,11 @@ def init_db() -> None:
                 value TEXT NOT NULL
             );
         """)
+
+        # Migrations
+        cols = {r[1] for r in conn.execute("PRAGMA table_info(bookings)")}
+        if 'address' not in cols:
+            conn.execute("ALTER TABLE bookings ADD COLUMN address TEXT NOT NULL DEFAULT ''")
 
         # Seed working hours (Mon=0 to Sun=6)
         if conn.execute("SELECT COUNT(*) FROM working_hours").fetchone()[0] == 0:
@@ -501,15 +507,16 @@ def create_booking(data: dict) -> str:
     with get_conn() as conn:
         conn.execute(
             "INSERT INTO bookings "
-            "(id, name, email, phone, service_id, service_label, duration_mins, price, "
+            "(id, name, email, phone, address, service_id, service_label, duration_mins, price, "
             " date, start_time, end_time, status, payment_status, notes, "
             " cancel_token, reschedule_token, created_at) "
-            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
             (
                 bid,
                 data['name'],
                 data['email'],
                 data.get('phone', ''),
+                data.get('address', ''),
                 data.get('service_id'),
                 data['service_label'],
                 int(data['duration_mins']),
