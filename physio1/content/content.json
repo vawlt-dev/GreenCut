@@ -1,7 +1,7 @@
 {
   "banner": {
     "enabled": false,
-    "message": "Now accepting new patients across Palmerston North & Surrounding Areas. Call 022 137 0336 to book.",
+    "message": "Now accepting new patients across Manawatu. Call 022 137 0336 to book.",
     "type": "promo"
   },
   "hero": {
@@ -26,7 +26,7 @@
     "phone": "022 137 0336",
     "email": "werphysio1@gmail.com",
     "service_area": "Palmerston North & Surrounding Areas",
-    "hours": "Mon–Fri 8:00am–6:00pm · Sat 8:00am–1:00pm"
+    "hours": "Tue-Thu 8:00am–6:00pm"
   },
   "services": [
     {
