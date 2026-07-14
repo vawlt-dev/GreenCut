@@ -92,9 +92,10 @@ def send_email(to: str, subject: str, body: str) -> bool:
         return False
     try:
         msg = MIMEText(body, 'html')
-        msg['Subject'] = subject
-        msg['From']    = gmail
-        msg['To']      = to
+        msg['Subject']  = subject
+        msg['From']     = 'PhysioOnWheels <physio@onwheels.nz>'
+        msg['Reply-To'] = 'physio@onwheels.nz'
+        msg['To']       = to
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as srv:
             srv.login(gmail, app_pw)
             srv.sendmail(gmail, to, msg.as_string())
