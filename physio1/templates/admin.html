@@ -316,6 +316,7 @@
                 <th>Payment</th>
                 <th>Status</th>
                 <th>Actions</th>
+                <th class="delete-mode-col" style="display:none;"></th>
               </tr>
             </thead>
             <tbody>
@@ -352,6 +353,10 @@
                     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                     <button type="submit" class="btn-sm" style="background:var(--coral);" title="Send payment link email">&#9993; Send Details</button>
                   </form>
+                </td>
+                <td class="delete-mode-col" style="display:none;">
+                  <button onclick="deleteBooking('{{ b.id }}', this)" title="Delete booking"
+                    style="background:#dc2626; color:#fff; border:none; border-radius:4px; padding:6px 10px; cursor:pointer; font-size:15px; line-height:1;">🗑</button>
                 </td>
               </tr>
               {% endfor %}
@@ -739,10 +744,36 @@
         <button type="button" class="btn-danger" onclick="document.getElementById('purge-modal').style.display='flex'">
           Purge All Bookings
         </button>
+        <hr style="border:none;border-top:1px solid #fca5a5;margin:18px 0;">
+        <p class="card-desc" style="margin-bottom:14px;">Enable delete mode to show a trashcan next to each booking. Requires password.</p>
+        <button type="button" class="btn-danger" onclick="document.getElementById('delete-mode-modal').style.display='flex'">
+          Enable Delete Mode
+        </button>
       </div>
     </div>
 
   </main>
+</div>
+
+<!-- Delete mode exit banner -->
+<div id="delete-mode-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; background:#b91c1c; color:#fff; z-index:8000; padding:12px 24px; display:none; align-items:center; justify-content:space-between; font-family:Arial,sans-serif; font-size:14px;">
+  <span>🗑️ <strong>Delete Mode Active</strong> — trashcans are visible on the Bookings tab.</span>
+  <button onclick="exitDeleteMode()" style="background:#fff; color:#b91c1c; border:none; border-radius:4px; padding:6px 16px; font-weight:700; cursor:pointer; font-size:13px;">Exit Delete Mode</button>
+</div>
+
+<!-- Delete mode password modal -->
+<div id="delete-mode-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.55); z-index:9999; align-items:center; justify-content:center;">
+  <div style="background:#fff; border-radius:8px; padding:32px 36px; max-width:400px; width:90%; box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+    <h3 style="font-family:Georgia,serif; color:#b91c1c; margin-bottom:8px; font-size:1.2rem;">Enable Delete Mode</h3>
+    <p style="font-family:Arial,sans-serif; font-size:14px; color:#64748b; margin-bottom:20px; line-height:1.6;">Enter the admin password to show delete buttons on each booking.</p>
+    <input type="password" id="delete-mode-password" placeholder="Admin password" required
+      style="width:100%; padding:10px 12px; border:1px solid #e2e8f0; border-radius:4px; font-size:14px; margin-bottom:8px; font-family:Arial,sans-serif;">
+    <div id="delete-mode-error" style="display:none; color:#b91c1c; font-family:Arial,sans-serif; font-size:13px; margin-bottom:12px;"></div>
+    <div style="display:flex; gap:10px; margin-top:8px;">
+      <button onclick="submitDeleteMode()" class="btn-danger" style="flex:1;">Enable</button>
+      <button onclick="closeDeleteModeModal()" style="flex:1; background:#f1f5f9; border:none; border-radius:4px; padding:8px; cursor:pointer; font-family:Arial,sans-serif; font-size:14px;">Cancel</button>
+    </div>
+  </div>
 </div>
 
 <!-- Purge confirmation modal -->
@@ -771,6 +802,60 @@
 </div>
 
 <script>
+// ---- Delete mode ----
+function closeDeleteModeModal() {
+  document.getElementById('delete-mode-modal').style.display = 'none';
+  document.getElementById('delete-mode-password').value = '';
+  document.getElementById('delete-mode-error').style.display = 'none';
+}
+document.getElementById('delete-mode-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeDeleteModeModal();
+});
+
+async function submitDeleteMode() {
+  const pw  = document.getElementById('delete-mode-password').value;
+  const err = document.getElementById('delete-mode-error');
+  err.style.display = 'none';
+  const csrf = document.querySelector('meta[name="csrf-token"]') ?
+    document.querySelector('meta[name="csrf-token"]').content :
+    document.querySelector('input[name="csrf_token"]') ?
+    document.querySelector('input[name="csrf_token"]').value : '';
+  const r = await fetch('/admin/delete-mode/verify', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-CSRFToken': csrf },
+    body: JSON.stringify({ password: pw })
+  });
+  const d = await r.json();
+  if (!d.ok) {
+    err.textContent = 'Incorrect password.';
+    err.style.display = 'block';
+    return;
+  }
+  closeDeleteModeModal();
+  document.querySelectorAll('.delete-mode-col').forEach(el => el.style.display = '');
+  document.getElementById('delete-mode-banner').style.display = 'flex';
+}
+
+function exitDeleteMode() {
+  document.querySelectorAll('.delete-mode-col').forEach(el => el.style.display = 'none');
+  document.getElementById('delete-mode-banner').style.display = 'none';
+}
+
+async function deleteBooking(id, btn) {
+  if (!confirm('Delete this booking? This cannot be undone.')) return;
+  const csrf = document.querySelector('input[name="csrf_token"]') ?
+    document.querySelector('input[name="csrf_token"]').value : '';
+  const r = await fetch('/admin/bookings/' + id + '/delete', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-CSRFToken': csrf },
+  });
+  if (r.ok) {
+    btn.closest('tr').remove();
+  } else {
+    alert('Failed to delete booking.');
+  }
+}
+
 // ---- Purge modal ----
 function closePurgeModal() {
   document.getElementById('purge-modal').style.display = 'none';

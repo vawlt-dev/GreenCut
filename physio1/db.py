@@ -553,6 +553,12 @@ def update_booking_payment(booking_id: str, payment_status: str) -> None:
         conn.commit()
 
 
+def delete_booking(booking_id: str) -> None:
+    with get_conn() as conn:
+        conn.execute("DELETE FROM bookings WHERE id = ?", (booking_id,))
+        conn.commit()
+
+
 def purge_bookings() -> int:
     with get_conn() as conn:
         n = conn.execute("SELECT COUNT(*) FROM bookings").fetchone()[0]

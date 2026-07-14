@@ -928,6 +928,26 @@ def admin_purge():
     return redirect('/admin?tab=settings&purge_ok=1')
 
 
+@app.route('/admin/delete-mode/verify', methods=['POST'])
+@login_required
+def admin_delete_mode_verify():
+    data = request.get_json(silent=True) or {}
+    pw = data.get('password', '')
+    if not hmac.compare_digest(pw, ADMIN_PASS):
+        return jsonify({'ok': False}), 403
+    return jsonify({'ok': True})
+
+
+@app.route('/admin/bookings/<booking_id>/delete', methods=['POST'])
+@login_required
+def admin_booking_delete(booking_id):
+    booking = db.get_booking(booking_id)
+    if not booking:
+        return jsonify({'error': 'Not found'}), 404
+    db.delete_booking(booking_id)
+    return jsonify({'ok': True})
+
+
 @app.route('/admin/bookings/<booking_id>/send-payment-link', methods=['POST'])
 @login_required
 def admin_send_payment_link(booking_id: str):
