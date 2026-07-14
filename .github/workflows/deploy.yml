@@ -13,9 +13,8 @@ jobs:
     steps:
       - name: Pull latest
         run: |
-          git -C C:\PhysioOnWheels\physio1 stash
+          git -C C:\PhysioOnWheels\physio1 checkout -- physio1/content/content.json
           git -C C:\PhysioOnWheels\physio1 pull
-          git -C C:\PhysioOnWheels\physio1 stash pop
 
       - name: Install dependencies
         run: pip install -r C:\PhysioOnWheels\physio1\requirements.txt
