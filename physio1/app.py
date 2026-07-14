@@ -469,7 +469,7 @@ def payment_intent():
         svc = db.get_service(service_id)
         if not svc:
             return jsonify({'error': 'Unknown service'}), 400
-        ok, msg = db.is_slot_available(date, start_time, svc['duration_mins'])
+        ok, msg = db.is_slot_available(datetime.date.fromisoformat(date), start_time, svc['duration_mins'])
         if not ok:
             return jsonify({'error': msg}), 409
         booking_id = db.create_booking({
