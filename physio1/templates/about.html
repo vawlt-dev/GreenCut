@@ -1,12 +1,11 @@
 {% extends "base.html" %}
 
-{% block title %}About — PhysioOnWheels Palmerston North{% endblock %}
-{% block og_title %}About Thandeka — PhysioOnWheels{% endblock %}
-{% block og_desc %}Meet Thandeka, registered physiotherapist and founder of PhysioOnWheels — bringing expert home physio care to Palmerston North &amp; surrounding areas.{% endblock %}
+{% block title %}About — VisitPro{% endblock %}
+{% block og_title %}About VisitPro{% endblock %}
+{% block og_desc %}Meet the team behind VisitPro — professional mobile services delivered to your door.{% endblock %}
 {% block seo %}
 {{ super() }}
-<meta name="description" content="Meet Thandeka, registered physiotherapist and founder of PhysioOnWheels. Expert home physiotherapy in Palmerston North &amp; surrounding areas.">
-<meta name="keywords" content="about PhysioOnWheels, Thandeka physiotherapist, registered physiotherapist Palmerston North, home physio Manawatu">
+<meta name="description" content="About VisitPro — professional mobile services delivered to your door. Meet our specialist team.">
 {% endblock %}
 
 {% block head %}
@@ -103,9 +102,9 @@
 <!-- THERAPIST PROFILE -->
 <section style="padding: 0 28px 72px; background: var(--white);">
   <div class="container" style="max-width: 820px;">
-    <p class="label">Your Physiotherapist</p>
+    <p class="label">Your Specialist</p>
     <div class="therapist-card">
-      <div class="therapist-avatar">🩺</div>
+      <div class="therapist-avatar">👤</div>
       <div>
         <h2 class="therapist-name">{{ c.about.therapist_name }}</h2>
         <p class="therapist-title">{{ c.about.therapist_title }}</p>
@@ -119,27 +118,27 @@
 <section style="padding: 72px 28px; background: var(--cream);">
   <div class="container">
     <p class="label">Benefits</p>
-    <h2 style="font-size: clamp(1.3rem, 3vw, 1.9rem); color: var(--teal-dark); margin-bottom: 48px;">Why Home Physiotherapy?</h2>
+    <h2 style="font-size: clamp(1.3rem, 3vw, 1.9rem); color: var(--teal-dark); margin-bottom: 48px;">Why Choose VisitPro?</h2>
     <div class="why-grid">
       <div class="why-card">
         <div class="why-icon">🏠</div>
         <h3>Comfort of Home</h3>
-        <p>Recover in familiar surroundings — more relaxing, and often more effective than a clinical setting.</p>
+        <p>Receive service in familiar surroundings — more convenient and often more effective than visiting a premises.</p>
       </div>
       <div class="why-card">
         <div class="why-icon">🎯</div>
-        <h3>Personalised Care</h3>
+        <h3>Personalised Service</h3>
         <p>Every session is tailored to you — your home, your routine, your specific goals.</p>
       </div>
       <div class="why-card">
-        <div class="why-icon">👨‍👩‍👧</div>
-        <h3>Family Involvement</h3>
-        <p>Loved ones can observe and learn how to support your recovery between sessions.</p>
+        <div class="why-icon">📅</div>
+        <h3>Flexible Scheduling</h3>
+        <p>Book at a time that suits you. We work around your schedule, not the other way around.</p>
       </div>
       <div class="why-card">
         <div class="why-icon">🚫</div>
         <h3>No Travel Required</h3>
-        <p>Ideal if you have limited mobility or find travelling to a clinic difficult.</p>
+        <p>Save time and hassle — we come to you, wherever you are in our service area.</p>
       </div>
     </div>
   </div>
@@ -148,13 +147,13 @@
 <!-- HOW TO ARRANGE -->
 <section style="padding: 72px 28px; background: var(--white);">
   <div class="container" style="max-width: 820px;">
-    <p class="label">Funding & Referrals</p>
+    <p class="label">Getting Started</p>
     <h2 style="font-size: clamp(1.2rem, 3vw, 1.7rem); color: var(--teal-dark); margin-bottom: 20px;">Arranging a Visit</h2>
     <p style="font-family: Arial, sans-serif; font-size: 15px; color: var(--text-muted); line-height: 1.85; margin-bottom: 16px;">
-      Our services may be funded privately or through healthcare schemes — contact us for details. Referrals are welcome from GPs, specialists, or directly from patients and families. <strong>No referral is required to book.</strong>
+      Getting started is simple — just book online or give us a call. No prior arrangements needed. We're happy to discuss your needs before you commit to a session.
     </p>
     <p style="font-family: Arial, sans-serif; font-size: 15px; color: var(--text-muted); line-height: 1.85; margin-bottom: 32px;">
-      To arrange a visit, simply book online or call us on <a href="tel:{{ c.contact.phone }}" style="color:var(--teal); font-weight:700;">{{ c.contact.phone }}</a>. We'll confirm your appointment and let you know what to expect at your first session.
+      To arrange a visit, book online or call us on <a href="tel:{{ c.contact.phone }}" style="color:var(--teal); font-weight:700;">{{ c.contact.phone }}</a>. We'll confirm your appointment and let you know what to expect.
     </p>
     <a href="/booking" class="btn btn-teal">Book a Session</a>
     &nbsp;&nbsp;

@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
-{% block title %}Privacy Policy — PhysioOnWheels{% endblock %}
+{% block title %}Privacy Policy — VisitPro{% endblock %}
 {% block seo %}
 {{ super() }}
-<meta name="description" content="PhysioOnWheels privacy policy — how we collect, use, and protect your personal information under the New Zealand Privacy Act 2020.">
+<meta name="description" content="VisitPro privacy policy — how we collect, use, and protect your personal information.">
 <meta name="robots" content="noindex, follow">
 {% endblock %}
 
@@ -72,8 +72,7 @@
   <p class="updated">Last updated: July 2025</p>
 
   <h2>1. Who We Are</h2>
-  <p>PhysioOnWheels is operated by Thandeka, a registered physiotherapist and sole trader based in Palmerston North, New Zealand. We provide mobile physiotherapy services, visiting clients in their homes across Palmerston North and surrounding areas.</p>
-  <p>If you have any questions about this policy, please contact us at <a href="mailto:{{ c.contact.email }}">{{ c.contact.email }}</a>.</p>
+  <p>VisitPro is a mobile service provider delivering professional services to clients at their homes or chosen locations. If you have any questions about this policy, please contact us at <a href="mailto:{{ c.contact.email }}">{{ c.contact.email }}</a>.</p>
 
   <h2>2. What Information We Collect</h2>
   <p>When you make a booking through this website, we collect:</p>
@@ -88,19 +87,18 @@
   <p>We also collect standard server logs (IP address, browser type, pages visited) for security and diagnostic purposes. These are not linked to your identity.</p>
 
   <h2>3. Payment Information</h2>
-  <p>Card payments are processed by <strong>Stripe</strong>, a PCI-DSS compliant payment provider. We never see, store, or have access to your card number, expiry date, or CVC. Stripe's own privacy policy applies to payment data: <a href="https://stripe.com/nz/privacy" target="_blank" rel="noopener">stripe.com/nz/privacy</a>.</p>
+  <p>Card payments are processed by <strong>Stripe</strong>, a PCI-DSS compliant payment provider. We never see, store, or have access to your card number, expiry date, or CVC. Stripe's own privacy policy applies to payment data: <a href="https://stripe.com/privacy" target="_blank" rel="noopener">stripe.com/privacy</a>.</p>
 
   <h2>4. The Booking Notes Field</h2>
   <div class="policy-note">
-    The notes field is intended for logistical information only — for example, gate codes, parking instructions, or access requirements. Please do not use it to submit detailed medical history or clinical information.
+    The notes field is intended for logistical information only — for example, gate codes, parking instructions, or access requirements. Please do not use it to submit sensitive personal information.
   </div>
-  <p>If you choose to include personal health information in the notes field, you are doing so voluntarily and with the understanding that it will be visible to Thandeka and stored as part of your booking record.</p>
-  <p><strong>No clinical health records are stored on this website.</strong> Assessment notes, treatment plans, and clinical records created during your physiotherapy sessions are maintained separately by Thandeka in accordance with the <em>Health Information Privacy Code 1994</em> and the obligations of a registered physiotherapist.</p>
+  <p>If you choose to include personal information in the notes field, you are doing so voluntarily and with the understanding that it will be visible to your service provider and stored as part of your booking record.</p>
 
   <h2>5. Who Can See Your Information</h2>
   <p>Your booking details — including your name, contact details, address, and any notes — are visible to:</p>
   <ul>
-    <li><strong>Thandeka</strong>, your physiotherapist, who needs this information to deliver your session</li>
+    <li><strong>Your assigned specialist</strong>, who needs this information to deliver your session</li>
     <li><strong>The website administrator</strong> (the person who built and maintains this website), who has access to the booking management system for technical support purposes</li>
   </ul>
   <p>We do not sell, rent, or share your personal information with any other third parties, except as required by law.</p>
@@ -110,27 +108,26 @@
   <ul>
     <li>To confirm and manage your appointment</li>
     <li>To contact you about your booking (confirmation, reminders, changes, or cancellations)</li>
-    <li>To travel to your home to deliver your physiotherapy session</li>
+    <li>To travel to your location to deliver your session</li>
     <li>To process payment for your appointment</li>
   </ul>
 
   <h2>7. How Long We Keep It</h2>
-  <p>Booking records are retained for a minimum of 7 years in accordance with New Zealand business record-keeping requirements. After this period, records are securely deleted.</p>
+  <p>Booking records are retained for a minimum of 7 years in accordance with standard business record-keeping requirements. After this period, records are securely deleted.</p>
   <p>You may request deletion of your personal details at any time after your appointments are complete, subject to our legal record-keeping obligations.</p>
 
   <h2>8. Security</h2>
   <p>Your data is stored on a secured server. Access to the booking system is protected by a password. Card data is handled exclusively by Stripe and is never stored on our servers.</p>
   <p>No method of electronic storage is 100% secure. While we take reasonable steps to protect your information, we cannot guarantee absolute security.</p>
 
-  <h2>9. Your Rights Under the Privacy Act 2020</h2>
-  <p>Under the New Zealand Privacy Act 2020, you have the right to:</p>
+  <h2>9. Your Rights</h2>
+  <p>You have the right to:</p>
   <ul>
     <li><strong>Access</strong> the personal information we hold about you</li>
     <li><strong>Correct</strong> any information that is inaccurate or out of date</li>
     <li><strong>Request deletion</strong> of your information (subject to our legal obligations)</li>
-    <li><strong>Make a complaint</strong> to the Office of the Privacy Commissioner if you believe your privacy rights have been breached: <a href="https://www.privacy.org.nz" target="_blank" rel="noopener">privacy.org.nz</a></li>
   </ul>
-  <p>To exercise any of these rights, please contact us at <a href="mailto:{{ c.contact.email }}">{{ c.contact.email }}</a>. We will respond within 20 working days as required by the Act.</p>
+  <p>To exercise any of these rights, please contact us at <a href="mailto:{{ c.contact.email }}">{{ c.contact.email }}</a>.</p>
 
   <h2>10. Changes to This Policy</h2>
   <p>We may update this policy from time to time. The date at the top of this page will reflect when it was last updated. Continued use of the website after changes are posted constitutes acceptance of the updated policy.</p>
