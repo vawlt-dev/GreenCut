@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 
-{% block title %}VisitPro — Mobile Services{% endblock %}
-{% block og_title %}VisitPro — Professional Mobile Services{% endblock %}
-{% block og_desc %}Professional services delivered to your door. Book online today.{% endblock %}
+{% block title %}PhysioOnWheels — Home Physiotherapy Palmerston North{% endblock %}
+{% block og_title %}PhysioOnWheels — Home Physiotherapy Palmerston North{% endblock %}
+{% block og_desc %}Thandeka brings professional physiotherapy directly to your door across Palmerston North &amp; surrounding areas. Book online today.{% endblock %}
 {% block seo %}
 {{ super() }}
-<meta name="description" content="VisitPro — professional mobile services delivered to your door. Expert, personalised care in your own home. Book online.">
+<meta name="description" content="PhysioOnWheels — professional home physiotherapy in Palmerston North &amp; surrounding areas. Expert care delivered to your door. Book online.">
+<meta name="keywords" content="physiotherapy Palmerston North, home physio Palmerston North, mobile physiotherapist, home physiotherapy, physio home visit, Manawatu physio">
 {% endblock %}
 
 {% block head %}
@@ -201,7 +202,7 @@
         <a href="/services" class="btn btn-outline">{{ c.hero.cta_services }}</a>
       </div>
     </div>
-    <img src="/content/images/hero-art.svg" alt="VisitPro home visit illustration" class="hero-img">
+    <img src="/content/images/hero-art.svg" alt="PhysioOnWheels home visit illustration" class="hero-img">
   </div>
 </section>
 
@@ -209,8 +210,8 @@
 <div class="trust-bar">
   <div class="trust-items">
     <div class="trust-item"><span>🏠</span><span>Home Visits</span></div>
-    <div class="trust-item"><span>👤</span><span>One-on-One Service</span></div>
-    <div class="trust-item"><span>⚡</span><span>Easy Online Booking</span></div>
+    <div class="trust-item"><span>👤</span><span>One-on-One Care</span></div>
+    <div class="trust-item"><span>📋</span><span>No Referral Needed</span></div>
     <div class="trust-item"><span>📞</span><span>{{ c.contact.phone }}</span></div>
   </div>
 </div>
@@ -221,7 +222,7 @@
     <p class="label">What We Offer</p>
     <h2 style="font-size: clamp(1.4rem, 3.5vw, 2rem); color: var(--teal-dark); margin-bottom: 12px;">Our Services</h2>
     <p style="font-family: Arial, sans-serif; font-size: 15px; color: var(--text-muted); max-width: 580px; margin-bottom: 48px; line-height: 1.7;">
-      We bring a full range of professional services to your door — from initial consultation through to ongoing support.
+      We bring the full range of physiotherapy to your home — from initial assessment through to ongoing rehabilitation.
     </p>
     <div class="services-grid">
       {% for s in c.services %}
@@ -244,23 +245,23 @@
   <div class="container" style="display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;">
     <div>
       <p class="label">Who We Help</p>
-      <h2 style="font-size: clamp(1.3rem, 3vw, 1.9rem); color: var(--teal-dark); margin-bottom: 20px;">Service for a Range of Needs</h2>
+      <h2 style="font-size: clamp(1.3rem, 3vw, 1.9rem); color: var(--teal-dark); margin-bottom: 20px;">Care for a Range of Conditions</h2>
       <p style="font-family: Arial, sans-serif; font-size: 15px; color: var(--text-muted); line-height: 1.8; margin-bottom: 28px;">
-        Whether you need a one-off consultation or ongoing support, our specialists have the expertise to help you get the best outcome.
+        Whether you're recovering from surgery or managing a long-term condition, our physiotherapists have the expertise to help you move better and feel better.
       </p>
-      <a href="/booking" class="btn btn-teal">Book a Session</a>
+      <a href="/booking" class="btn btn-teal">Book an Assessment</a>
     </div>
     <div class="conditions-list">
-      <div class="condition-item">Ongoing support plans</div>
-      <div class="condition-item">One-off consultations</div>
-      <div class="condition-item">Regular follow-up visits</div>
-      <div class="condition-item">Progress reviews</div>
-      <div class="condition-item">Home-based sessions</div>
-      <div class="condition-item">Flexible scheduling</div>
-      <div class="condition-item">Personalised plans</div>
-      <div class="condition-item">Package bookings</div>
-      <div class="condition-item">Extended sessions</div>
-      <div class="condition-item">Remote & local clients</div>
+      <div class="condition-item">Post-surgical recovery</div>
+      <div class="condition-item">Stroke rehabilitation</div>
+      <div class="condition-item">Chronic back & neck pain</div>
+      <div class="condition-item">Parkinson's disease</div>
+      <div class="condition-item">Falls & balance issues</div>
+      <div class="condition-item">Multiple sclerosis</div>
+      <div class="condition-item">Joint replacements</div>
+      <div class="condition-item">Arthritis management</div>
+      <div class="condition-item">Sports injuries</div>
+      <div class="condition-item">Respiratory conditions</div>
     </div>
   </div>
 </section>
@@ -279,12 +280,12 @@
       <div class="step">
         <div class="step-num">2</div>
         <h3>We Come to You</h3>
-        <p>Your specialist arrives at your location with everything needed — no travel, no waiting rooms.</p>
+        <p>Your physiotherapist arrives at your home with all necessary equipment — no travel, no waiting rooms.</p>
       </div>
       <div class="step">
         <div class="step-num">3</div>
         <h3>Progress Together</h3>
-        <p>We assess, plan, and build a personalised approach. Regular sessions ensure you're moving toward your goals.</p>
+        <p>We assess, treat, and build a personalised plan. Regular sessions ensure you're progressing toward your goals.</p>
       </div>
     </div>
   </div>
@@ -293,9 +294,9 @@
 <!-- CTA STRIP -->
 <section style="background: var(--teal-xdark); padding: 64px 28px; text-align:center;">
   <div class="container">
-    <h2 style="color:#fff; font-size: clamp(1.3rem, 3vw, 2rem); margin-bottom: 16px;">Ready to Get Started?</h2>
+    <h2 style="color:#fff; font-size: clamp(1.3rem, 3vw, 2rem); margin-bottom: 16px;">Ready to Start Your Recovery?</h2>
     <p style="font-family: Arial, sans-serif; color: #99f6e4; font-size: 16px; margin-bottom: 36px; max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.7;">
-      Book a session today or call us to discuss your needs.
+      Book a session today or call us to discuss your needs. No referral required.
     </p>
     <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
       <a href="/booking" class="btn btn-coral">Book a Session</a>

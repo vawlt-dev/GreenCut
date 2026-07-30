@@ -1,37 +1,49 @@
 <!DOCTYPE html>
+<!-- PhysioOnWheels -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}VisitPro — Mobile Services{% endblock %}</title>
+  <title>{% block title %}PhysioOnWheels — Home Physiotherapy{% endblock %}</title>
   {% block seo %}
-  <meta name="description" content="Professional mobile services delivered to your door. Expert, personalised care in your own home — no travel, no waiting rooms.">
+  <meta name="description" content="Professional home physiotherapy in Palmerston North &amp; surrounding areas. Thandeka brings expert physio care directly to your door — no travel, no waiting rooms.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="{{ request.url }}">
+  <meta name="geo.region" content="NZ-MWT">
+  <meta name="geo.placename" content="Palmerston North">
+  <link rel="canonical" href="https://physio.onwheels.nz{{ request.path }}">
   <!-- Open Graph -->
-  <meta property="og:site_name" content="VisitPro">
+  <meta property="og:site_name" content="PhysioOnWheels">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="{% block og_title %}VisitPro — Mobile Services{% endblock %}">
-  <meta property="og:description" content="{% block og_desc %}Professional services delivered to your door. Book online today.{% endblock %}">
-  <meta property="og:url" content="{{ request.url }}">
+  <meta property="og:title" content="{% block og_title %}PhysioOnWheels — Home Physiotherapy Palmerston North{% endblock %}">
+  <meta property="og:description" content="{% block og_desc %}Professional physiotherapy delivered to your door across Palmerston North &amp; surrounding areas.{% endblock %}">
+  <meta property="og:url" content="https://physio.onwheels.nz{{ request.path }}">
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="VisitPro — Mobile Services">
-  <meta name="twitter:description" content="Professional services delivered to your door. Book online today.">
+  <meta name="twitter:title" content="PhysioOnWheels — Home Physiotherapy Palmerston North">
+  <meta name="twitter:description" content="Expert physio care delivered to your door across Palmerston North &amp; surrounding areas.">
   <!-- LocalBusiness structured data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "VisitPro",
-    "description": "Mobile service provider delivering expert home visits across the local area and surrounds.",
-    "telephone": "{{ (c.contact.phone if c.contact is defined else '') }}",
+    "@type": "MedicalBusiness",
+    "name": "PhysioOnWheels",
+    "description": "Mobile physiotherapy service delivering expert home visits across Palmerston North and surrounding areas.",
+    "url": "https://physio.onwheels.nz",
+    "telephone": "022 137 0336",
     "email": "{{ (c.contact.email if c.contact is defined else '') }}",
-    "areaServed": "Local Area & Surrounds",
+    "areaServed": "Palmerston North & Surrounding Areas",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Palmerston North",
+      "addressRegion": "Manawatu-Whanganui",
+      "addressCountry": "NZ"
+    },
     "openingHoursSpecification": [
-      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00" }
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:00", "closes": "13:00" }
     ],
-    "priceRange": "$$"
+    "priceRange": "$$",
+    "medicalSpecialty": "Physiotherapy"
   }
   </script>
   {% endblock %}
@@ -234,7 +246,7 @@
 <!-- NAVIGATION -->
 <nav>
   <div class="nav-inner">
-    <a href="/" class="nav-brand">Visit<span>Pro</span></a>
+    <a href="/" class="nav-brand">Physio<span>OnWheels</span></a>
     <ul class="nav-links">
       <li><a href="/" {% if active == 'home' %}class="active"{% endif %}>Home</a></li>
       <li><a href="/about" {% if active == 'about' %}class="active"{% endif %}>About</a></li>
@@ -257,8 +269,8 @@
 <footer>
   <div class="footer-inner">
     <div>
-      <span class="footer-brand">Visit<span>Pro</span></span>
-      <p class="footer-tagline">Professional services, delivered to your door across {{ c.contact.service_area }}.</p>
+      <span class="footer-brand">Physio<span>OnWheels</span></span>
+      <p class="footer-tagline">Professional physiotherapy, delivered to your door across {{ c.contact.service_area }}.</p>
       <p class="footer-area">{{ c.contact.service_area }}</p>
     </div>
     <div>
@@ -282,8 +294,8 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© {{ current_year }} VisitPro. All rights reserved.</span>
-    <span style="color:#5eead4; opacity:0.3; font-size:11px;">© VisitPro</span>
+    <span>© {{ current_year }} PhysioOnWheels. All rights reserved.</span>
+    <span style="color:#5eead4; opacity:0.3; font-size:11px;">© PhysioOnWheels</span>
   </div>
 </footer>
 
