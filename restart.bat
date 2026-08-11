@@ -6,9 +6,9 @@ for /f "tokens=5" %%a in ('netstat -ano ^| findstr ":5003 " ^| findstr "LISTENIN
 timeout /t 2 /nobreak >nul
 
 echo [GreenCut] Pulling latest from git...
-git -C C:\GreenCut pull
+git -C C:\Lawns\GreenCut pull
 
 echo [GreenCut] Starting server (lawns.blakecollins.dev -> port 5003)...
-start "GreenCut" cmd /k python C:\GreenCut\physio1\app.py
+start "GreenCut" cmd /k python C:\Lawns\GreenCut\physio1\app.py
 
 echo [GreenCut] Done.
