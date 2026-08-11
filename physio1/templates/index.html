@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
-{% block title %}PhysioOnWheels — Home Physiotherapy Palmerston North{% endblock %}
-{% block og_title %}PhysioOnWheels — Home Physiotherapy Palmerston North{% endblock %}
-{% block og_desc %}Thandeka brings professional physiotherapy directly to your door across Palmerston North &amp; surrounding areas. Book online today.{% endblock %}
+{% block title %}GreenCut — Lawn Mowing & Garden Care{% endblock %}
+{% block og_title %}GreenCut — Lawn Mowing & Garden Care{% endblock %}
+{% block og_desc %}Professional lawn mowing, hedge trimming and garden care delivered to your door. Book online today.{% endblock %}
 {% block seo %}
 {{ super() }}
-<meta name="description" content="PhysioOnWheels — professional home physiotherapy in Palmerston North &amp; surrounding areas. Expert care delivered to your door. Book online.">
-<meta name="keywords" content="physiotherapy Palmerston North, home physio Palmerston North, mobile physiotherapist, home physiotherapy, physio home visit, Manawatu physio">
+<meta name="description" content="GreenCut — professional lawn mowing and garden care delivered to your door. Mowing, hedges, cleanups and more. Book online.">
+<meta name="keywords" content="lawn mowing, garden care, hedge trimming, lawn service, garden cleanup, landscaping">
 {% endblock %}
 
 {% block head %}
@@ -202,16 +202,16 @@
         <a href="/services" class="btn btn-outline">{{ c.hero.cta_services }}</a>
       </div>
     </div>
-    <img src="/content/images/hero-art.svg" alt="PhysioOnWheels home visit illustration" class="hero-img">
+    <img src="/content/images/hero-art.svg" alt="GreenCut lawn care illustration" class="hero-img">
   </div>
 </section>
 
 <!-- TRUST BAR -->
 <div class="trust-bar">
   <div class="trust-items">
-    <div class="trust-item"><span>🏠</span><span>Home Visits</span></div>
-    <div class="trust-item"><span>👤</span><span>One-on-One Care</span></div>
-    <div class="trust-item"><span>📋</span><span>No Referral Needed</span></div>
+    <div class="trust-item"><span>🌿</span><span>Fully Equipped</span></div>
+    <div class="trust-item"><span>🏠</span><span>We Come to You</span></div>
+    <div class="trust-item"><span>📋</span><span>No Lock-In Contracts</span></div>
     <div class="trust-item"><span>📞</span><span>{{ c.contact.phone }}</span></div>
   </div>
 </div>
@@ -222,7 +222,7 @@
     <p class="label">What We Offer</p>
     <h2 style="font-size: clamp(1.4rem, 3.5vw, 2rem); color: var(--teal-dark); margin-bottom: 12px;">Our Services</h2>
     <p style="font-family: Arial, sans-serif; font-size: 15px; color: var(--text-muted); max-width: 580px; margin-bottom: 48px; line-height: 1.7;">
-      We bring the full range of physiotherapy to your home — from initial assessment through to ongoing rehabilitation.
+      We bring the full range of lawn and garden services to your property — from a quick mow through to a complete garden transformation.
     </p>
     <div class="services-grid">
       {% for s in c.services %}
@@ -245,23 +245,23 @@
   <div class="container" style="display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;">
     <div>
       <p class="label">Who We Help</p>
-      <h2 style="font-size: clamp(1.3rem, 3vw, 1.9rem); color: var(--teal-dark); margin-bottom: 20px;">Care for a Range of Conditions</h2>
+      <h2 style="font-size: clamp(1.3rem, 3vw, 1.9rem); color: var(--teal-dark); margin-bottom: 20px;">We Handle Any Property</h2>
       <p style="font-family: Arial, sans-serif; font-size: 15px; color: var(--text-muted); line-height: 1.8; margin-bottom: 28px;">
-        Whether you're recovering from surgery or managing a long-term condition, our physiotherapists have the expertise to help you move better and feel better.
+        Whether you need a tidy weekly mow or a serious garden rescue, we've got the tools and experience to get it done right.
       </p>
-      <a href="/booking" class="btn btn-teal">Book an Assessment</a>
+      <a href="/booking" class="btn btn-teal">Get a Quote</a>
     </div>
     <div class="conditions-list">
-      <div class="condition-item">Post-surgical recovery</div>
-      <div class="condition-item">Stroke rehabilitation</div>
-      <div class="condition-item">Chronic back & neck pain</div>
-      <div class="condition-item">Parkinson's disease</div>
-      <div class="condition-item">Falls & balance issues</div>
-      <div class="condition-item">Multiple sclerosis</div>
-      <div class="condition-item">Joint replacements</div>
-      <div class="condition-item">Arthritis management</div>
-      <div class="condition-item">Sports injuries</div>
-      <div class="condition-item">Respiratory conditions</div>
+      <div class="condition-item">Residential lawns</div>
+      <div class="condition-item">Overgrown sections</div>
+      <div class="condition-item">Weekly maintenance</div>
+      <div class="condition-item">Rental properties</div>
+      <div class="condition-item">Pre-sale preparation</div>
+      <div class="condition-item">Seasonal cleanups</div>
+      <div class="condition-item">Hedge & shrub work</div>
+      <div class="condition-item">Commercial grounds</div>
+      <div class="condition-item">New property setup</div>
+      <div class="condition-item">Holiday cover</div>
     </div>
   </div>
 </section>
@@ -275,17 +275,17 @@
       <div class="step">
         <div class="step-num">1</div>
         <h3>Book Online or Call</h3>
-        <p>Choose your service and a time that suits you. We'll confirm your appointment and let you know what to expect.</p>
+        <p>Choose your service and a time that suits you. We'll confirm your booking and let you know what to expect.</p>
       </div>
       <div class="step">
         <div class="step-num">2</div>
         <h3>We Come to You</h3>
-        <p>Your physiotherapist arrives at your home with all necessary equipment — no travel, no waiting rooms.</p>
+        <p>Your landscaper arrives fully equipped — mowers, trimmers, blowers, the works. No trips to the hire shop needed.</p>
       </div>
       <div class="step">
         <div class="step-num">3</div>
-        <h3>Progress Together</h3>
-        <p>We assess, treat, and build a personalised plan. Regular sessions ensure you're progressing toward your goals.</p>
+        <h3>Sit Back & Relax</h3>
+        <p>We handle everything and leave your property looking great. Set up a recurring schedule and forget about it.</p>
       </div>
     </div>
   </div>
@@ -294,9 +294,9 @@
 <!-- CTA STRIP -->
 <section style="background: var(--teal-xdark); padding: 64px 28px; text-align:center;">
   <div class="container">
-    <h2 style="color:#fff; font-size: clamp(1.3rem, 3vw, 2rem); margin-bottom: 16px;">Ready to Start Your Recovery?</h2>
+    <h2 style="color:#fff; font-size: clamp(1.3rem, 3vw, 2rem); margin-bottom: 16px;">Ready for a Great-Looking Lawn?</h2>
     <p style="font-family: Arial, sans-serif; color: #99f6e4; font-size: 16px; margin-bottom: 36px; max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.7;">
-      Book a session today or call us to discuss your needs. No referral required.
+      Book online today or call us to discuss your property. No lock-in contracts, no hassle.
     </p>
     <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
       <a href="/booking" class="btn btn-coral">Book a Session</a>

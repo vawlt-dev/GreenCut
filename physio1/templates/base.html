@@ -1,49 +1,38 @@
 <!DOCTYPE html>
-<!-- PhysioOnWheels -->
+<!-- GreenCut -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}PhysioOnWheels — Home Physiotherapy{% endblock %}</title>
+  <title>{% block title %}GreenCut — Lawn & Garden Care{% endblock %}</title>
   {% block seo %}
-  <meta name="description" content="Professional home physiotherapy in Palmerston North &amp; surrounding areas. Thandeka brings expert physio care directly to your door — no travel, no waiting rooms.">
+  <meta name="description" content="Professional lawn mowing and garden care delivered to your door. GreenCut handles the hard work so you don't have to.">
   <meta name="robots" content="index, follow">
-  <meta name="geo.region" content="NZ-MWT">
-  <meta name="geo.placename" content="Palmerston North">
-  <link rel="canonical" href="https://physio.onwheels.nz{{ request.path }}">
+  <link rel="canonical" href="{{ request.url }}">
   <!-- Open Graph -->
-  <meta property="og:site_name" content="PhysioOnWheels">
+  <meta property="og:site_name" content="GreenCut">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="{% block og_title %}PhysioOnWheels — Home Physiotherapy Palmerston North{% endblock %}">
-  <meta property="og:description" content="{% block og_desc %}Professional physiotherapy delivered to your door across Palmerston North &amp; surrounding areas.{% endblock %}">
-  <meta property="og:url" content="https://physio.onwheels.nz{{ request.path }}">
+  <meta property="og:title" content="{% block og_title %}GreenCut — Lawn & Garden Care{% endblock %}">
+  <meta property="og:description" content="{% block og_desc %}Professional lawn mowing and garden care delivered to your door. Book online today.{% endblock %}">
+  <meta property="og:url" content="{{ request.url }}">
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="PhysioOnWheels — Home Physiotherapy Palmerston North">
-  <meta name="twitter:description" content="Expert physio care delivered to your door across Palmerston North &amp; surrounding areas.">
+  <meta name="twitter:title" content="GreenCut — Lawn & Garden Care">
+  <meta name="twitter:description" content="Professional lawn mowing and garden care delivered to your door. Book online today.">
   <!-- LocalBusiness structured data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "MedicalBusiness",
-    "name": "PhysioOnWheels",
-    "description": "Mobile physiotherapy service delivering expert home visits across Palmerston North and surrounding areas.",
-    "url": "https://physio.onwheels.nz",
-    "telephone": "022 137 0336",
+    "@type": "LocalBusiness",
+    "name": "GreenCut",
+    "description": "Professional lawn mowing, hedge trimming, and garden care delivered to your property.",
+    "telephone": "{{ (c.contact.phone if c.contact is defined else '') }}",
     "email": "{{ (c.contact.email if c.contact is defined else '') }}",
-    "areaServed": "Palmerston North & Surrounding Areas",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Palmerston North",
-      "addressRegion": "Manawatu-Whanganui",
-      "addressCountry": "NZ"
-    },
+    "areaServed": "Local Area & Surrounds",
     "openingHoursSpecification": [
-      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00" },
-      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:00", "closes": "13:00" }
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "07:00", "closes": "17:00" }
     ],
-    "priceRange": "$$",
-    "medicalSpecialty": "Physiotherapy"
+    "priceRange": "$$"
   }
   </script>
   {% endblock %}
@@ -246,7 +235,7 @@
 <!-- NAVIGATION -->
 <nav>
   <div class="nav-inner">
-    <a href="/" class="nav-brand">Physio<span>OnWheels</span></a>
+    <a href="/" class="nav-brand">Green<span>Cut</span></a>
     <ul class="nav-links">
       <li><a href="/" {% if active == 'home' %}class="active"{% endif %}>Home</a></li>
       <li><a href="/about" {% if active == 'about' %}class="active"{% endif %}>About</a></li>
@@ -269,8 +258,8 @@
 <footer>
   <div class="footer-inner">
     <div>
-      <span class="footer-brand">Physio<span>OnWheels</span></span>
-      <p class="footer-tagline">Professional physiotherapy, delivered to your door across {{ c.contact.service_area }}.</p>
+      <span class="footer-brand">Green<span>Cut</span></span>
+      <p class="footer-tagline">Professional lawn and garden care, delivered to your door across {{ c.contact.service_area }}.</p>
       <p class="footer-area">{{ c.contact.service_area }}</p>
     </div>
     <div>
@@ -294,8 +283,8 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© {{ current_year }} PhysioOnWheels. All rights reserved.</span>
-    <span style="color:#5eead4; opacity:0.3; font-size:11px;">© PhysioOnWheels</span>
+    <span>© {{ current_year }} GreenCut. All rights reserved.</span>
+    <span style="color:#5eead4; opacity:0.3; font-size:11px;">© GreenCut</span>
   </div>
 </footer>
 
