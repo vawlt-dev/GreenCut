@@ -14,7 +14,7 @@ try:
 except ImportError:
     _stripe_available = False
 
-PORT = 5002
+PORT = 5003
 
 app = Flask(__name__)
 

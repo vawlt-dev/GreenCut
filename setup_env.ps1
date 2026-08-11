@@ -3,8 +3,8 @@
 # This file is gitignored - never commit credentials.
 
 Write-Host ""
-Write-Host "PhysioOnWheels - Environment Setup" -ForegroundColor Cyan
-Write-Host "====================================" -ForegroundColor Cyan
+Write-Host "GreenCut - Environment Setup" -ForegroundColor Cyan
+Write-Host "============================" -ForegroundColor Cyan
 Write-Host ""
 
 $user = Read-Host "Admin username"
