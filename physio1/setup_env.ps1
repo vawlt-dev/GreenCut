@@ -1,9 +1,9 @@
 # setup_env.ps1
-# Run this once to configure PhysioOnWheels credentials as persistent user environment variables.
+# Run this once to configure GreenCut credentials as persistent user environment variables.
 # This file is gitignored - never commit credentials.
 
 Write-Host ""
-Write-Host "PhysioOnWheels - Environment Setup" -ForegroundColor Cyan
+Write-Host "GreenCut - Environment Setup" -ForegroundColor Cyan
 Write-Host "====================================" -ForegroundColor Cyan
 Write-Host ""
 

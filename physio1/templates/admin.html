@@ -3,61 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin — PhysioOnWheels</title>
+  <title>Admin — GreenCut</title>
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --teal:       #0d9488; --teal-dark:  #0f766e; --teal-xdark: #134e4a;
-      --teal-light: #5eead4; --teal-pale:  #f0fdfa; --teal-100:   #ccfbf1;
-      --white:      #ffffff; --cream:      #f8fafc;
-      --border:     #e2e8f0; --text:       #1e293b; --muted:      #64748b;
-      --coral:      #f97316;
+      --teal:       #3f8f2f; --teal-dark:  #2f6d24; --teal-xdark: #101c12;
+      --teal-light: #c6f135; --teal-pale:  #f2f7e4; --teal-100:   #dcefc0;
+      --white:      #ffffff; --cream:      #f6f3e7; --paper: #fffdf8;
+      --border:     #e5e0cf; --text:       #16241a; --muted:      #5c6b5c;
+      --coral:      #ff8a3d;
+      --ink: #101c12; --ink-2: #16241a; --lime: #c6f135;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
     }
-    body { font-family: Georgia, 'Times New Roman', serif; background: #eef6f5; color: var(--text); min-height: 100vh; }
+    body { font-family: 'Inter', Arial, sans-serif; background: #f1f4ec; color: var(--text); min-height: 100vh; }
+    h1, h2, h3 { font-family: 'Bricolage Grotesque', sans-serif; }
 
     header {
-      background: var(--teal-xdark); border-bottom: 3px solid var(--teal);
+      background: var(--ink); border-bottom: 3px solid var(--teal);
       padding: 0 32px; height: 62px; display: flex; align-items: center;
       justify-content: space-between; position: sticky; top: 0; z-index: 200;
     }
-    .header-brand { font-family: Georgia, serif; font-size: 1rem; font-weight: bold; color: #fff; }
-    .header-brand span { color: var(--teal-light); }
-    .header-right { display: flex; align-items: center; gap: 16px; font-family: Arial, sans-serif; font-size: 13px; }
-    .btn-viewsite { background: var(--teal); color: #fff !important; padding: 7px 16px; border-radius: 4px; font-weight: 700; font-size: 12px; text-decoration: none; }
-    .btn-viewsite:hover { background: var(--teal-dark) !important; }
+    .header-brand { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.05rem; font-weight: 800; color: #fff; }
+    .header-brand span { color: var(--lime); }
+    .header-right { display: flex; align-items: center; gap: 16px; font-family: 'Inter', sans-serif; font-size: 13px; }
+    .btn-viewsite { background: var(--teal); color: #fff !important; padding: 8px 18px; border-radius: 30px; font-weight: 700; font-size: 12px; text-decoration: none; transition: transform 0.2s var(--ease), background 0.2s; }
+    .btn-viewsite:hover { background: var(--teal-dark) !important; transform: translateY(-2px); }
 
     .admin-layout { display: flex; min-height: calc(100vh - 62px); }
 
     .sidebar {
-      width: 210px; background: var(--white); border-right: 1px solid var(--border);
+      width: 216px; background: var(--paper); border-right: 1px solid var(--border);
       padding: 20px 0; flex-shrink: 0; position: sticky; top: 62px;
       height: calc(100vh - 62px); overflow-y: auto;
     }
     .sidebar-section {
-      font-family: Arial, sans-serif; font-size: 10px; font-weight: 700;
-      letter-spacing: 2px; text-transform: uppercase; color: var(--teal);
-      padding: 16px 20px 8px;
+      font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 800;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--teal-dark);
+      padding: 18px 20px 8px;
     }
     .tab-btn {
       display: block; width: 100%; text-align: left; background: none; border: none;
-      padding: 10px 20px; font-family: Arial, sans-serif; font-size: 13px; color: var(--muted);
-      cursor: pointer; transition: all 0.15s; border-left: 3px solid transparent;
+      padding: 10px 20px; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; color: var(--muted);
+      cursor: pointer; transition: all 0.2s var(--ease); border-left: 3px solid transparent;
     }
-    .tab-btn:hover { background: var(--teal-pale); color: var(--teal); }
-    .tab-btn.active { background: var(--teal-pale); color: var(--teal-dark); font-weight: 700; border-left-color: var(--teal); }
+    .tab-btn:hover { background: var(--teal-pale); color: var(--teal-dark); padding-left: 24px; }
+    .tab-btn.active { background: var(--teal-pale); color: var(--teal-dark); font-weight: 800; border-left-color: var(--teal); }
     .tab-icon { margin-right: 8px; }
 
     .admin-main { flex: 1; padding: 32px 36px; max-width: 1400px; }
-    .page-title { font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); margin-bottom: 4px; }
-    .page-heading { font-size: 1.4rem; color: var(--teal-xdark); margin-bottom: 24px; }
+    .page-title { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--teal-dark); margin-bottom: 4px; }
+    .page-heading { font-size: 1.5rem; font-weight: 800; color: var(--ink-2); margin-bottom: 24px; }
 
     .tab-content { display: none; }
-    .tab-content.active { display: block; }
+    .tab-content.active { display: block; animation: tabIn 0.35s var(--ease); }
+    @keyframes tabIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-    .card { background: var(--white); border: 1px solid var(--border); border-radius: 6px; padding: 24px 28px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
-    .card-title { font-size: 0.95rem; color: var(--teal-dark); margin-bottom: 4px; }
-    .card-desc { font-family: Arial, sans-serif; font-size: 13px; color: var(--muted); margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+    .card { background: var(--paper); border: 1px solid var(--border); border-radius: 12px; padding: 24px 28px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(16,28,18,0.04); transition: box-shadow 0.25s var(--ease); }
+    .card:hover { box-shadow: 0 8px 24px rgba(16,28,18,0.08); }
+    .card-title { font-size: 0.95rem; font-weight: 700; color: var(--ink-2); margin-bottom: 4px; }
+    .card-desc { font-family: 'Inter', sans-serif; font-size: 13px; color: var(--muted); margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
 
     label.field-label {
       font-family: Arial, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1px;
@@ -97,22 +104,23 @@
 
     .preview { border-radius: 4px; padding: 10px 16px; font-family: Arial, sans-serif; font-size: 14px; font-weight: 600; margin-bottom: 20px; text-align: center; }
     .preview-info    { background: var(--teal); color: #fff; }
-    .preview-warning { background: #f97316; color: #fff; }
+    .preview-warning { background: #ff8a3d; color: #fff; }
     .preview-promo   { background: var(--teal-xdark); color: var(--teal-100); }
     .preview-off     { background: #f1f5f9; color: #94a3b8; border: 1px dashed var(--border); font-style: italic; }
 
     .btn-save {
-      padding: 10px 26px; background: var(--teal); color: #fff; border: none; border-radius: 4px;
-      font-family: Arial, sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; transition: background 0.2s;
+      padding: 11px 28px; background: var(--ink-2); color: var(--lime); border: none; border-radius: 30px;
+      font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 800; cursor: pointer; transition: transform 0.2s var(--ease), background 0.2s;
     }
-    .btn-save:hover { background: var(--teal-dark); }
-    .btn-danger { background: #dc2626; color: #fff; border: none; border-radius: 4px; padding: 7px 14px; font-family: Arial, sans-serif; font-size: 12px; font-weight: 700; cursor: pointer; }
-    .btn-danger:hover { background: #b91c1c; }
-    .btn-sm { padding: 6px 14px; font-size: 12px; background: var(--teal); color: #fff; border: none; border-radius: 4px; font-family: Arial, sans-serif; font-weight: 700; cursor: pointer; }
-    .btn-sm:hover { background: var(--teal-dark); }
+    .btn-save:hover { background: var(--teal); color: #fff; transform: translateY(-2px); }
+    .btn-danger { background: #dc2626; color: #fff; border: none; border-radius: 30px; padding: 7px 16px; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; cursor: pointer; transition: transform 0.2s var(--ease), background 0.2s; }
+    .btn-danger:hover { background: #b91c1c; transform: translateY(-2px); }
+    .btn-sm { padding: 6px 16px; font-size: 12px; background: var(--teal); color: #fff; border: none; border-radius: 30px; font-family: 'Inter', sans-serif; font-weight: 700; cursor: pointer; transition: transform 0.2s var(--ease), background 0.2s; }
+    .btn-sm:hover { background: var(--teal-dark); transform: translateY(-2px); }
 
-    .edit-row { background: var(--cream); border: 1px solid var(--border); border-radius: 6px; padding: 18px; margin-bottom: 12px; }
-    .edit-row-header { font-family: Arial, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+    .edit-row { background: var(--cream); border: 1px solid var(--border); border-radius: 10px; padding: 18px; margin-bottom: 12px; transition: box-shadow 0.25s var(--ease); }
+    .edit-row:hover { box-shadow: 0 6px 18px rgba(16,28,18,0.08); }
+    .edit-row-header { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: var(--teal-dark); margin-bottom: 12px; }
 
     /* Bookings table */
     .bookings-table { width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; font-size: 13px; }
@@ -120,17 +128,18 @@
     .bookings-table td { padding: 10px 10px; border-bottom: 1px solid var(--border); vertical-align: middle; }
     .bookings-table tr:last-child td { border-bottom: none; }
     .bookings-table tr:hover td { background: var(--teal-pale); }
-    .patient-name { font-weight: 700; color: var(--text); }
-    .patient-contact { color: var(--muted); font-size: 12px; }
+    .customer-name { font-weight: 700; color: var(--text); }
+    .customer-contact { color: var(--muted); font-size: 12px; }
     .status-select { padding: 5px 8px; border: 1px solid var(--border); border-radius: 4px; font-family: Arial, sans-serif; font-size: 12px; background: var(--white); margin: 0 4px 0 0; width: auto; }
     .btn-update { padding: 5px 12px; background: var(--teal); color: #fff; border: none; border-radius: 4px; font-family: Arial, sans-serif; font-size: 12px; font-weight: 700; cursor: pointer; }
     .btn-update:hover { background: var(--teal-dark); }
     .no-bookings { text-align: center; padding: 48px; color: var(--muted); font-family: Arial, sans-serif; font-size: 15px; }
 
     .stat-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 20px; }
-    .stat-box { background: var(--white); border: 1px solid var(--border); border-top: 3px solid var(--teal); border-radius: 6px; padding: 14px 16px; text-align: center; }
-    .stat-num { font-size: 1.7rem; font-weight: bold; color: var(--teal-xdark); }
-    .stat-label { font-family: Arial, sans-serif; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+    .stat-box { background: var(--paper); border: 1px solid var(--border); border-top: 3px solid var(--teal); border-radius: 10px; padding: 16px; text-align: center; transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease); }
+    .stat-box:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(16,28,18,0.1); }
+    .stat-num { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--ink-2); }
+    .stat-label { font-family: 'Inter', sans-serif; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; font-weight: 700; }
 
     /* Working hours grid */
     .wh-grid { display: grid; grid-template-columns: 100px 1fr 1fr 80px; gap: 10px; align-items: center; margin-bottom: 8px; }
@@ -174,7 +183,7 @@
 <body>
 
 <header>
-  <span class="header-brand">Physio<span>OnWheels</span> Admin</span>
+  <span class="header-brand">Green<span>Cut</span> Admin</span>
   <div class="header-right">
     <a href="/" target="_blank" class="btn-viewsite">View Site</a>
     <form method="POST" action="/admin/logout" style="display:inline;">
@@ -212,10 +221,10 @@
       <h1 class="page-heading">Calendar</h1>
       <div class="card" style="padding:20px;">
         <div style="display:flex;gap:16px;align-items:center;margin-bottom:16px;font-family:Arial,sans-serif;font-size:12px;flex-wrap:wrap;">
-          <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;border-radius:3px;background:#0d9488;display:inline-block;"></span>Confirmed</span>
-          <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;border-radius:3px;background:#f97316;display:inline-block;"></span>Pending</span>
+          <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;border-radius:3px;background:#3f8f2f;display:inline-block;"></span>Confirmed</span>
+          <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;border-radius:3px;background:#ff8a3d;display:inline-block;"></span>Pending</span>
           <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;border-radius:3px;background:#64748b;display:inline-block;"></span>Completed</span>
-          <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;border-radius:3px;background:#f97316;display:inline-block;"></span>Blocked</span>
+          <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;border-radius:3px;background:#ff8a3d;display:inline-block;"></span>Blocked</span>
         </div>
         <div id="admin-calendar"></div>
       </div>
@@ -309,7 +318,7 @@
           <table class="bookings-table">
             <thead>
               <tr>
-                <th>Patient</th>
+                <th>Customer</th>
                 <th>Service</th>
                 <th>Date / Time</th>
                 <th>Price</th>
@@ -323,9 +332,9 @@
               {% for b in bookings | sort(attribute='created_at', reverse=True) %}
               <tr>
                 <td>
-                  <div class="patient-name">{{ b.name }}</div>
-                  <div class="patient-contact">{{ b.email }}</div>
-                  {% if b.phone %}<div class="patient-contact">{{ b.phone }}</div>{% endif %}
+                  <div class="customer-name">{{ b.name }}</div>
+                  <div class="customer-contact">{{ b.email }}</div>
+                  {% if b.phone %}<div class="customer-contact">{{ b.phone }}</div>{% endif %}
                 </td>
                 <td style="color:var(--muted);max-width:130px;">
                   {{ b.service_label }}
@@ -506,7 +515,7 @@
               </div>
               <div>
                 <label class="field-label">Colour</label>
-                <input type="color" name="color" value="#f97316" style="width:60px;padding:4px;height:38px;margin-bottom:14px;">
+                <input type="color" name="color" value="#ff8a3d" style="width:60px;padding:4px;height:38px;margin-bottom:14px;">
               </div>
             </div>
             <div class="form-row">
@@ -619,11 +628,11 @@
           <label class="field-label">Paragraph 2</label>
           <textarea name="about_p2" rows="3">{{ c.about.paragraphs[1] if c.about.paragraphs|length > 1 else '' }}</textarea>
           <div class="form-row">
-            <div><label class="field-label">Therapist Name</label><input type="text" name="therapist_name" value="{{ c.about.therapist_name }}"></div>
-            <div><label class="field-label">Therapist Title</label><input type="text" name="therapist_title" value="{{ c.about.therapist_title }}"></div>
+            <div><label class="field-label">Landscaper Name</label><input type="text" name="landscaper_name" value="{{ c.about.landscaper_name }}"></div>
+            <div><label class="field-label">Landscaper Title</label><input type="text" name="landscaper_title" value="{{ c.about.landscaper_title }}"></div>
           </div>
           <label class="field-label">Bio</label>
-          <textarea name="therapist_bio" rows="3">{{ c.about.therapist_bio }}</textarea>
+          <textarea name="landscaper_bio" rows="3">{{ c.about.landscaper_bio }}</textarea>
         </div>
         <div class="card">
           <h2 class="card-title">Contact Details</h2>

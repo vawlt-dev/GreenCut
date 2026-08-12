@@ -131,6 +131,7 @@ def _seed_services_from_json(conn: sqlite3.Connection) -> None:
 
     duration_map = {
         '30 min': 30, '45 min': 45, '60 min': 60, '90 min': 90,
+        '120 min': 120, '150 min': 150, '180 min': 180,
         '45-60 min': 60, '45–60 min': 60,
     }
 

@@ -3,58 +3,87 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Login — PhysioOnWheels</title>
+  <title>Admin Login — GreenCut</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --teal:       #0d9488;
-      --teal-dark:  #0f766e;
-      --teal-xdark: #134e4a;
-      --teal-pale:  #f0fdfa;
-      --teal-100:   #ccfbf1;
-      --border:     #e2e8f0;
-      --text:       #1e293b;
-      --muted:      #64748b;
+      --teal:       #3f8f2f;
+      --teal-dark:  #2f6d24;
+      --ink:        #101c12;
+      --ink-2:      #16241a;
+      --lime:       #c6f135;
+      --teal-pale:  #f2f7e4;
+      --teal-100:   #dcefc0;
+      --border:     #e5e0cf;
+      --text:       #16241a;
+      --muted:      #5c6b5c;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
     }
     body {
-      font-family: Georgia, 'Times New Roman', serif;
-      background: linear-gradient(135deg, #134e4a 0%, #0d9488 100%);
+      font-family: 'Inter', Arial, sans-serif;
+      background: linear-gradient(150deg, #0c1810 0%, #1f4d24 55%, #3f8f2f 100%);
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .blob {
+      position: absolute;
+      border-radius: 42% 58% 65% 35% / 45% 40% 60% 55%;
+      opacity: 0.5;
+      animation: drift 18s ease-in-out infinite;
+    }
+    .blob-1 { width: 380px; height: 380px; right: -100px; top: -100px; background: rgba(198,241,53,0.09); }
+    .blob-2 { width: 260px; height: 260px; left: -80px; bottom: -80px; background: rgba(255,255,255,0.05); animation-delay: -6s; }
+    @keyframes drift {
+      0%, 100% { border-radius: 42% 58% 65% 35% / 45% 40% 60% 55%; transform: translate(0,0) rotate(0deg); }
+      50% { border-radius: 60% 40% 35% 65% / 55% 65% 35% 45%; transform: translate(12px,-10px) rotate(6deg); }
     }
     .login-card {
-      background: #fff;
-      border-radius: 10px;
-      padding: 44px 40px;
+      background: #fffdf8;
+      border-radius: 20px;
+      padding: 46px 42px;
       width: 100%;
       max-width: 400px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+      box-shadow: 0 30px 70px rgba(0,0,0,0.35);
+      position: relative;
+      z-index: 1;
+      animation: riseIn 0.6s var(--ease);
     }
-    .brand {
-      text-align: center;
-      margin-bottom: 32px;
+    @keyframes riseIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    .brand { text-align: center; margin-bottom: 32px; }
+    .brand-mark {
+      width: 48px; height: 48px;
+      margin: 0 auto 14px;
+      border-radius: 14px 4px 14px 4px;
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      box-shadow: 0 8px 20px rgba(63,143,47,0.35);
     }
     .brand-name {
-      font-size: 1.3rem;
-      font-weight: bold;
-      color: var(--teal-dark);
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--ink-2);
     }
-    .brand-name span { color: #f97316; }
+    .brand-name span { color: var(--teal); }
     .brand-sub {
-      font-family: Arial, sans-serif;
-      font-size: 12px;
+      font-size: 11px;
+      font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--muted);
-      margin-top: 4px;
+      margin-top: 6px;
     }
     label {
-      font-family: Arial, sans-serif;
       font-size: 11px;
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: 1px;
       text-transform: uppercase;
       color: var(--text);
@@ -63,37 +92,37 @@
     }
     input {
       width: 100%;
-      padding: 11px 14px;
+      padding: 12px 14px;
       border: 1px solid var(--border);
-      border-radius: 4px;
-      font-family: Arial, sans-serif;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
       font-size: 15px;
       color: var(--text);
       margin-bottom: 18px;
       transition: border-color 0.2s, box-shadow 0.2s;
+      background: #fff;
     }
-    input:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 0 3px rgba(13,148,136,0.12); }
+    input:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 0 4px rgba(63,143,47,0.14); }
     .btn-login {
       width: 100%;
-      padding: 13px;
-      background: var(--teal);
-      color: #fff;
+      padding: 14px;
+      background: var(--ink-2);
+      color: var(--lime);
       border: none;
-      border-radius: 4px;
-      font-family: Arial, sans-serif;
+      border-radius: 30px;
+      font-family: 'Inter', sans-serif;
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 800;
       cursor: pointer;
       letter-spacing: 0.5px;
-      transition: background 0.2s;
+      transition: transform 0.25s var(--ease), background 0.25s;
     }
-    .btn-login:hover { background: var(--teal-dark); }
+    .btn-login:hover { background: var(--teal); color: #fff; transform: translateY(-2px); }
     .error-msg {
       background: #fef2f2;
       border: 1px solid #fca5a5;
-      border-radius: 4px;
+      border-radius: 8px;
       padding: 11px 14px;
-      font-family: Arial, sans-serif;
       font-size: 13px;
       color: #b91c1c;
       margin-bottom: 18px;
@@ -101,19 +130,22 @@
     .back-link {
       display: block;
       text-align: center;
-      margin-top: 18px;
-      font-family: Arial, sans-serif;
+      margin-top: 20px;
       font-size: 13px;
       color: var(--muted);
       text-decoration: none;
+      transition: color 0.2s;
     }
-    .back-link:hover { color: var(--teal); }
+    .back-link:hover { color: var(--teal-dark); }
   </style>
 </head>
 <body>
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
   <div class="login-card">
     <div class="brand">
-      <div class="brand-name">Physio<span>OnWheels</span></div>
+      <div class="brand-mark">🌿</div>
+      <div class="brand-name">Green<span>Cut</span></div>
       <div class="brand-sub">Admin Panel</div>
     </div>
     {% if error %}

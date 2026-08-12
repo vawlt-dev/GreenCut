@@ -1,16 +1,1 @@
-[
-  {
-    "id": "8106abdc-9e05-4542-8d67-fe5e99f093ae",
-    "name": "Jumbo",
-    "email": "jack.black@compuserve.net",
-    "phone": "0225556999",
-    "service": "Initial Assessment",
-    "date": "2026-05-19",
-    "time": "10:00",
-    "notes": "Well, my name is jumbo, what do you think is my problem, ITS MY BACK!",
-    "price": 120,
-    "payment_status": "paid",
-    "status": "cancelled",
-    "created_at": "2026-05-16T17:26:09.593740"
-  }
-]
+﻿[]

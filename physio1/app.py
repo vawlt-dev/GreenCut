@@ -93,8 +93,8 @@ def send_email(to: str, subject: str, body: str) -> bool:
     try:
         msg = MIMEText(body, 'html')
         msg['Subject']  = subject
-        msg['From']     = 'PhysioOnWheels <physio@onwheels.nz>'
-        msg['Reply-To'] = 'physio@onwheels.nz'
+        msg['From']     = 'GreenCut <hello@greencut.example.com>'
+        msg['Reply-To'] = 'hello@greencut.example.com'
         msg['To']       = to
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as srv:
             srv.login(gmail, app_pw)
@@ -119,7 +119,7 @@ def booking_email_body(booking: dict, extra: str = '') -> str:
           <td><strong>{booking['duration_mins']} min</strong></td></tr>
     </table>
     {extra}
-    <p style="color:#64748b;font-size:12px;margin-top:24px;">PhysioOnWheels</p>
+    <p style="color:#64748b;font-size:12px;margin-top:24px;">GreenCut</p>
     """
 
 
@@ -303,7 +303,7 @@ def booking_post():
     # Send confirmation email
     send_email(
         email,
-        'Booking Confirmed — PhysioOnWheels',
+        'Booking Confirmed — GreenCut',
         booking_email_body(booking, f"""
         <p>We look forward to seeing you.</p>
         <p><a href="{request.host_url}booking/manage/{booking['cancel_token']}">View, reschedule or cancel your appointment</a></p>
@@ -361,9 +361,9 @@ def my_bookings():
         body = (
             '<p>Here are your upcoming appointments:</p>'
             + '<br><br>'.join(lines)
-            + '<p style="color:#64748b;font-size:12px;margin-top:24px;">PhysioOnWheels</p>'
+            + '<p style="color:#64748b;font-size:12px;margin-top:24px;">GreenCut</p>'
         )
-        send_email(email, 'Your PhysioOnWheels Appointments', body)
+        send_email(email, 'Your GreenCut Appointments', body)
 
     # Always show the same message (don't leak whether email exists)
     return render_template('my_bookings.html', c=c, active='',
@@ -407,7 +407,7 @@ def booking_manage(token: str):
                 booking = db.get_booking(booking['id'])
                 send_email(
                     booking['email'],
-                    'Appointment Cancelled — PhysioOnWheels',
+                    'Appointment Cancelled — GreenCut',
                     booking_email_body(booking, '<p>Your appointment has been cancelled as requested.</p>'),
                 )
                 flash_success = 'Your appointment has been cancelled.'
@@ -434,7 +434,7 @@ def booking_manage(token: str):
                 booking = db.get_booking(booking['id'])
                 send_email(
                     booking['email'],
-                    'Appointment Rescheduled — PhysioOnWheels',
+                    'Appointment Rescheduled — GreenCut',
                     booking_email_body(booking, '<p>Your appointment has been moved to the new time above.</p>'),
                 )
                 flash_success = 'Your appointment has been rescheduled.'
@@ -551,7 +551,7 @@ def payment_complete():
     owner_email = s.get('gmail_address', '')
     send_email(
         booking['email'],
-        'Payment Confirmed — PhysioOnWheels',
+        'Payment Confirmed — GreenCut',
         booking_email_body(booking, f'<p>Your payment has been received and your appointment is confirmed.</p><p><a href="{request.host_url}booking/manage/{booking["cancel_token"]}">View your appointment</a></p>'),
     )
     if owner_email:
@@ -584,7 +584,7 @@ def payment_demo():
     booking = db.get_booking(booking_id)
     send_email(
         booking['email'],
-        'Payment Confirmed — PhysioOnWheels',
+        'Payment Confirmed — GreenCut',
         booking_email_body(booking, f'<p>Your payment has been received and your appointment is confirmed.</p><p><a href="{request.host_url}booking/manage/{booking["cancel_token"]}">View your appointment</a></p>'),
     )
     if owner_email:
@@ -681,9 +681,9 @@ def admin_content():
         p1 = request.form.get('about_p1', '')[:1000].strip()
         p2 = request.form.get('about_p2', '')[:1000].strip()
         a['paragraphs']      = [p for p in [p1, p2] if p]
-        a['therapist_name']  = request.form.get('therapist_name',  '')[:100].strip()
-        a['therapist_title'] = request.form.get('therapist_title', '')[:100].strip()
-        a['therapist_bio']   = request.form.get('therapist_bio',   '')[:1000].strip()
+        a['landscaper_name']  = request.form.get('landscaper_name',  '')[:100].strip()
+        a['landscaper_title'] = request.form.get('landscaper_title', '')[:100].strip()
+        a['landscaper_bio']   = request.form.get('landscaper_bio',   '')[:1000].strip()
 
         ct = data.setdefault('contact', {})
         ct['phone']        = request.form.get('contact_phone', '')[:50].strip()
@@ -904,7 +904,7 @@ def admin_create_booking():
         booking = db.get_booking(booking_id)
         send_email(
             email,
-            f'Payment Required — PhysioOnWheels',
+            f'Payment Required — GreenCut',
             booking_email_body(booking, f"""
             <p>Please complete your booking by making payment:</p>
             <p><a href="{request.host_url}pay/{booking_id}" style="background:#0d9488;color:#fff;padding:10px 20px;text-decoration:none;border-radius:4px;">Pay ${price:.2f} NZD</a></p>
@@ -959,11 +959,11 @@ def admin_send_payment_link(booking_id: str):
     btn = lambda label, url: f'<p><a href="{url}" style="background:#0d9488;color:#fff;padding:10px 20px;text-decoration:none;border-radius:4px;">{label}</a></p>'
 
     if booking['payment_status'] == 'paid':
-        subject = 'Appointment Confirmation — PhysioOnWheels'
+        subject = 'Appointment Confirmation — GreenCut'
         extra   = f'<p>Your appointment is confirmed and payment has been received. We look forward to seeing you.</p>{btn("View Appointment", manage_url)}'
     else:
         price_label = f"Pay ${booking['price']:.2f} NZD"
-        subject = 'Complete Your Booking — PhysioOnWheels'
+        subject = 'Complete Your Booking — GreenCut'
         extra   = f'<p>Please complete your booking by making payment:</p>{btn(price_label, manage_url)}'
 
     send_email(booking['email'], subject, booking_email_body(booking, extra))

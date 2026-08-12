@@ -18,9 +18,9 @@
       "Our lawn and garden service was founded on a simple belief: a well-kept property shouldn't require hours of your weekend. Whether you need a weekly mow, a seasonal cleanup, or a full garden overhaul, we make it easy.",
       "Each job is carried out by an experienced, fully equipped landscaper who takes the time to understand your property and preferences. Your garden plan is designed around your needs — not a one-size-fits-all approach."
     ],
-    "therapist_name": "Jamie",
-    "therapist_title": "Head Landscaper",
-    "therapist_bio": "Jamie is a qualified horticulturist and landscaper with years of experience across residential and commercial properties. Passionate about outdoor spaces, they founded GreenCut to give homeowners access to professional lawn care without the hassle."
+    "landscaper_name": "Jamie",
+    "landscaper_title": "Head Landscaper",
+    "landscaper_bio": "Jamie is a qualified horticulturist and landscaper with years of experience across residential and commercial properties. Passionate about outdoor spaces, they founded GreenCut to give homeowners access to professional lawn care without the hassle."
   },
   "contact": {
     "phone": "000 000 0000",
@@ -75,27 +75,45 @@
   "pricing": [
     {
       "name": "Standard Lawn Mow",
-      "price": 60,
+      "price": 55,
       "duration": "45 min",
-      "description": "Mow, edge, and blow down — standard residential section"
+      "description": "Mow, edge, and blow down — standard residential section up to 300m²"
     },
     {
       "name": "Large Property Mow",
       "price": 95,
       "duration": "90 min",
-      "description": "Mow, edge, and blow down — larger sections and lifestyle blocks"
+      "description": "Mow, edge, and blow down — larger sections and lifestyle blocks, 300-600m²"
     },
     {
-      "name": "Hedge Trim",
-      "price": 80,
-      "duration": "60 min",
-      "description": "Hedge and shrub trim, clippings cleared away"
+      "name": "Hedge & Shrub Trim",
+      "price": 140,
+      "duration": "90 min",
+      "description": "Hedge and shrub trim, clippings cleared away — standard residential hedges"
     },
     {
       "name": "Full Garden Cleanup",
-      "price": 150,
-      "duration": "2-3 hrs",
-      "description": "Comprehensive cleanup — weeding, clearing, mowing, edging"
+      "price": 190,
+      "duration": "150 min",
+      "description": "Comprehensive cleanup — weeding, clearing, mowing, edging, green waste removed"
+    },
+    {
+      "name": "Weed Control",
+      "price": 65,
+      "duration": "45 min",
+      "description": "Targeted hand-pulling and treatment for lawns, beds, and paths"
+    },
+    {
+      "name": "Edging & Border Tidy",
+      "price": 50,
+      "duration": "45 min",
+      "description": "Crisp, defined edges along paths, driveways, and garden beds"
+    },
+    {
+      "name": "Lawn Fertilising & Treatment",
+      "price": 85,
+      "duration": "60 min",
+      "description": "Fertilising, aeration, and lawn health treatment for a thicker, greener lawn"
     }
   ],
   "availability": {

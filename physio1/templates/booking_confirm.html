@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Booking Confirmed — PhysioOnWheels{% endblock %}
+{% block title %}Booking Confirmed — GreenCut{% endblock %}
 
 {% block head %}
 <style>
@@ -17,7 +17,7 @@
     box-shadow: 0 4px 32px rgba(13,148,136,0.1);
   }
   .confirm-header {
-    background: linear-gradient(135deg, #134e4a, #0d9488);
+    background: linear-gradient(135deg, #101c12, #3f8f2f);
     padding: 40px 36px;
     text-align: center;
     color: #fff;
@@ -33,7 +33,7 @@
     margin: 0 auto 20px;
   }
   .confirm-header h1 { font-size: 1.8rem; margin-bottom: 8px; }
-  .confirm-header p { font-family: Arial, sans-serif; font-size: 15px; color: #99f6e4; }
+  .confirm-header p { font-family: Arial, sans-serif; font-size: 15px; color: #d4f2a0; }
   .ref-badge {
     display: inline-block;
     background: rgba(255,255,255,0.15);
@@ -123,7 +123,7 @@
       </h1>
       <p>
         {% if booking.payment_status == 'paid' %}
-          Your session is booked and your payment has been processed.
+          Your visit is booked and your payment has been processed.
         {% else %}
           We'll be in touch to confirm your appointment and arrange payment.
         {% endif %}
@@ -137,7 +137,7 @@
       <!-- DETAILS GRID -->
       <div class="detail-grid">
         <div class="detail-item">
-          <p class="detail-label">Patient</p>
+          <p class="detail-label">Customer</p>
           <p class="detail-val">{{ booking.name }}</p>
         </div>
         <div class="detail-item">
@@ -173,8 +173,8 @@
         <h3>What Happens Next</h3>
         <ol>
           <li>You'll receive a confirmation email at <strong>{{ booking.email }}</strong>.</li>
-          <li>Your physiotherapist will contact you before your session to confirm details and your address.</li>
-          <li>On the day, they'll arrive with all necessary equipment — just have a comfortable space ready.</li>
+          <li>Your landscaper will contact you before your visit to confirm details and your address.</li>
+          <li>On the day, they'll arrive with all necessary equipment — just make sure the area is accessible.</li>
           {% if booking.payment_status == 'pending' %}
           <li>We'll be in touch to arrange payment prior to your session.</li>
           {% endif %}
