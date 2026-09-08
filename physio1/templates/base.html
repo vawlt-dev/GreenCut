@@ -3,7 +3,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Fixed desktop-width viewport: mobile browsers scale the whole
+       (desktop) layout down to fit the screen on load, showing the full
+       page zoomed out, instead of switching to the responsive mobile CSS
+       at 1:1 scale. -->
+  <meta name="viewport" content="width=1280">
   <title>{% block title %}GreenCut — Lawn & Garden Care{% endblock %}</title>
   {% block seo %}
   <meta name="description" content="Professional lawn mowing and garden care delivered to your door. GreenCut handles the hard work so you don't have to.">
