@@ -1053,10 +1053,14 @@ def admin_calendar_feed():
 
 @app.after_request
 def set_security_headers(response):
-    response.headers['X-Frame-Options']        = 'SAMEORIGIN'
+    # X-Frame-Options only supports one static value and can't allowlist a
+    # second origin (ALLOW-FROM is deprecated and unsupported in current
+    # Firefox/Chrome), so framing permission lives entirely in the CSP
+    # frame-ancestors directive below, which every modern browser honours
+    # over X-Frame-Options when both are present.
     response.headers['X-Content-Type-Options']  = 'nosniff'
     response.headers['Referrer-Policy']         = 'strict-origin-when-cross-origin'
-    response.headers['Content-Security-Policy'] = "frame-ancestors 'self'"
+    response.headers['Content-Security-Policy'] = "frame-ancestors 'self' https://blakecollins.dev"
     return response
 
 
