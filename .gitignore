@@ -8,3 +8,7 @@ __pycache__/
 wamey/
 *.pdf
 test.txt
+# sqlite runtime state: lives on the server (hypervisor persists it), never in git
+*.db
+*.db-shm
+*.db-wal
